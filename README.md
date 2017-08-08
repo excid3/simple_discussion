@@ -52,6 +52,12 @@ Add the following line to your `config/routes.rb` file:
 mount SimpleDiscussion::Engine => "/forum"
 ```
 
+You can also add the CSS to your `application.css` to load some helpful default styles.
+
+```javascript
+//= require simple_discussion
+```
+
 ## Usage
 
 To get all the basic functionality, the only thing you need to do is add a link to SimpleDiscussion in your navbar.
