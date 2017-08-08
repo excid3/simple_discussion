@@ -4,6 +4,8 @@ SimpleDiscussion is a Rails forum gem extracting the [forum from GoRails](https:
 
 Out of the box, SimpleDiscussion comes with styling for Boostrap v4 but you're free to customize the UI as much as you like by installing the views and tweaking the HTML.
 
+[![GoRails Forum](https://d3vv6lp55qjaqc.cloudfront.net/items/3j2p3o1j0d1O0R1w2j1Y/Screen%20Shot%202017-08-08%20at%203.12.01%20PM.png?X-CloudApp-Visitor-Id=51470&v=d439dcae)](https://d3vv6lp55qjaqc.cloudfront.net/items/3j2p3o1j0d1O0R1w2j1Y/Screen%20Shot%202017-08-08%20at%203.12.01%20PM.png?X-CloudApp-Visitor-Id=51470&v=d439dcae)
+
 ## Installation
 
 Before you get started, SimpleDiscussion requires a `User` model in your application (for now).
