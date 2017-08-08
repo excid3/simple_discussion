@@ -1,8 +1,8 @@
 # SimpleDiscussion
 
-SimpleDiscussion is a Rails forum gem extracting the forum from
-[GoRails' forum](https://gorails.com/forum). It includes categories,
-simple moderation, the ability to mark threads as solved, and more.
+SimpleDiscussion is a Rails forum gem extracting the forum from [GoRails' forum](https://gorails.com/forum). It includes categories, simple moderation, the ability to mark threads as solved, and more.
+
+Out of the box, SimpleDiscussion comes with styling for Boostrap v4 but you're free to customize the UI as much as you like by installing the views and tweaking the HTML.
 
 ## Installation
 
@@ -67,6 +67,18 @@ To get all the basic functionality, the only thing you need to do is add a link 
 ```
 
 This will take the user to the views inside the Rails engine.
+
+If you'd like to customize the views that SimpleDiscussion uses, you can install the views to your Rails app:
+
+```bash
+rails g simple_discussion:views
+```
+
+You can also install a copy of the SimpleDiscussion controllers for advanced customization:
+
+```bash
+rails g simple_discussion:controllers
+```
 
 ## Development
 
