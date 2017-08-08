@@ -72,4 +72,12 @@ class ForumThread < ApplicationRecord
       "You're not receiving notifications from this thread."
     end
   end
+
+  # These are the users to notify on a new thread. Currently this does nothing,
+  # but you can override this to provide whatever functionality you like here.
+  #
+  # For example: You might use this to send all moderators an email of new threads.
+  def notify_users
+    []
+  end
 end

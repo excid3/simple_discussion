@@ -42,7 +42,7 @@ class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationCo
     @forum_thread.forum_posts.each{ |post| post.user_id = current_user.id }
 
     if @forum_thread.save
-      #ForumThreadNotificationJob.perform_later(@forum_thread.forum_posts.first.id)
+      SimpleDiscussion::ForumThreadNotificationJob.perform_later(@forum_thread)
       redirect_to simple_discussion.forum_thread_path(@forum_thread)
     else
       render action: :new

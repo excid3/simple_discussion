@@ -90,6 +90,19 @@ rails g simple_discussion:helpers
 
 **NOTE:** Keep in mind that the more customization you do, the tougher gem upgrades will be in the future.
 
+### Email And Slack Notifications
+
+By default, SimpleDiscussion will attempt to send email and slack notifications for users subscribed to threads. To turn these off you can do the following in `config/initializers/simple_discussion.rb`
+
+```ruby
+SimpleDiscussion.setup do |config|
+  config.send_email_notifications = false # Default: true
+  config.send_slack_notifications = false # Default: true
+end
+```
+
+Slack notifications require you to set `simple_discussion_slack_url` in your `config/secrets.yml`. If you don't have this value set, it will not attempt Slack notifications even if they are enabled.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

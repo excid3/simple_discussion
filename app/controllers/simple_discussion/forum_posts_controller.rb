@@ -9,7 +9,7 @@ class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationCont
     @forum_post.user_id = current_user.id
 
     if @forum_post.save
-      #ForumNotificationJob.perform_later(@forum_post.id)
+      SimpleDiscussion::ForumPostNotificationJob.perform_later(@forum_post)
       redirect_to simple_discussion.forum_thread_path(@forum_thread, anchor: "forum_post_#{@forum_post.id}")
     else
       render template: "simple_discussion/forum_threads/show"
