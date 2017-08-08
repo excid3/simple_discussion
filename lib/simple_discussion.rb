@@ -1,6 +1,7 @@
+require 'font-awesome-sass'
 require 'friendly_id'
-require 'will_paginate'
 require 'gravatar_image_tag'
+require 'will_paginate'
 
 require "simple_discussion/version"
 require "simple_discussion/engine"

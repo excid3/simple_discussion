@@ -6,7 +6,7 @@ Out of the box, SimpleDiscussion comes with styling for Boostrap v4 but you're f
 
 ## Installation
 
-Before you get started, SimpleDiscussion requires a `User` model in your application (for now). 
+Before you get started, SimpleDiscussion requires a `User` model in your application (for now).
 
 Add this line to your application's Gemfile:
 
@@ -52,10 +52,10 @@ Add the following line to your `config/routes.rb` file:
 mount SimpleDiscussion::Engine => "/forum"
 ```
 
-You can also add the CSS to your `application.css` to load some helpful default styles.
+Lastly, add the CSS to your `application.css` to load some default styles.
 
-```javascript
-//= require simple_discussion
+```scss
+*= require simple_discussion
 ```
 
 ## Usage
