@@ -1,10 +1,12 @@
 # SimpleDiscussion
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/simple_discussion`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+SimpleDiscussion is a Rails forum gem extracting the forum from
+[GoRails' forum](https://gorails.com/forum). It includes categories,
+simple moderation, the ability to mark threads as solved, and more.
 
 ## Installation
+
+Before you get started, SimpleDiscussion requires a `User` model in your application (for now). 
 
 Add this line to your application's Gemfile:
 
@@ -14,15 +16,51 @@ gem 'simple_discussion'
 
 And then execute:
 
-    $ bundle
+```bash
+bundle
+```
 
-Or install it yourself as:
+Install the migrations and migrate:
 
-    $ gem install simple_discussion
+```bash
+rails simple_discussion:install:migrations
+rails db:migrate
+```
+
+Add SimpleDiscussion to your `User` model. The model **must** have `name` method which will be used to display the user's name on the forum. Currently only a model named `User` will work, but this will be fixed shortly.
+
+```ruby
+class User < ActiveRecord::Base
+  include SimpleDiscussion::ForumUser
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+end
+```
+
+Optionally, you can add a `moderator` flag to the `User` model to allow users to edit threads and posts they didn't write.
+
+```bash
+rails g migration AddModeratorToUsers moderator:boolean
+rails db:migrate
+```
+
+Add the following line to your `config/routes.rb` file:
+
+```ruby
+mount SimpleDiscussion::Engine => "/forum"
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+To get all the basic functionality, the only thing you need to do is add a link to SimpleDiscussion in your navbar.
+
+```erb
+<%= link_to "Forum", simple_discussion_path %>
+```
+
+This will take the user to the views inside the Rails engine.
 
 ## Development
 
@@ -32,7 +70,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/simple_discussion. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/excid3/simple_discussion. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

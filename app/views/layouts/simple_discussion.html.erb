@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-sm-3">
+
+    <div class="card card-block">
+      <%= link_to 'Ask A Question', simple_discussion.new_forum_thread_path, class: "btn btn-outline-primary btn-block" %>
+      <hr />
+
+      <div class="forum-thread-filters">
+        <h5><strong>Filters</strong></h5>
+        <div><%= forum_link_to simple_discussion.forum_threads_path, exact: true do %><%= icon "bars" %> All Threads <% end %></div>
+        <% if user_signed_in? %>
+          <div><%= forum_link_to simple_discussion.mine_forum_threads_path do %><%= icon "user-circle-o" %> My Questions<% end %></div>
+          <div><%= forum_link_to simple_discussion.participating_forum_threads_path do %><%= icon "comments-o" %> Participating<% end %></div>
+        <% end %>
+        <div><%= forum_link_to simple_discussion.answered_forum_threads_path do %><%= icon "check" %> Answered<% end %></div>
+        <div><%= forum_link_to simple_discussion.unanswered_forum_threads_path do %><%= icon "question" %> Unanswered<% end %></div>
+      </div>
+
+      <hr />
+
+      <div class="forum-thread-filters">
+        <p><strong>By Category</strong></p>
+        <div><%= forum_link_to simple_discussion.forum_threads_path, exact: true do %><%= icon "circle" %> All<% end %></div>
+        <% ForumCategory.sorted.each do |category| %>
+          <div>
+            <%= forum_link_to simple_discussion.forum_category_forum_threads_path(category) do %>
+              <%= icon "circle", style: "color: #{category.color}" %>
+              <%= category.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <% if @forum_thread.present? && @forum_thread.persisted? %>
+        <hr />
+
+        <%# User has not posted in the thread or subscribed %>
+        <h5>Notifications</h5>
+
+        <%= link_to simple_discussion.forum_thread_notifications_path(@forum_thread), method: :post, class: "btn btn-secondary btn-sm btn-block mb-2" do %>
+          <% if @forum_thread.subscribed? current_user %>
+            <%= icon "bell-slash" %> Unsubscribe
+          <% else %>
+            <%= icon "bell" %> Subscribe
+          <% end %>
+        <% end %>
+
+        <small><%= @forum_thread.subscribed_reason(current_user) %></small>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col">
+    <%= yield %>
+  </div>
+</div>
+
+<% parent_layout("application") %>

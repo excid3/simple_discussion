@@ -1,0 +1,19 @@
+<h1><%= icon "thumb-tack", class: "text-muted" if @forum_thread.pinned? %> <%= @forum_thread.title %></h1>
+
+<% if is_moderator_or_owner?(@forum_thread) %>
+  <div class="pull-right">
+    <%= link_to icon("pencil"), simple_discussion.edit_forum_thread_path(@forum_thread),
+      class: "text-muted",
+      data: { toggle: "tooltip", placement: "left" },
+      title: "Edit this thread" %>
+  </div>
+<% end %>
+
+<p class="thread-details">
+  <strong><%= category_link(@forum_thread.forum_category) %></strong>
+  • Asked <%= time_ago_in_words @forum_thread.created_at %> by <%= @forum_thread.user.name %>
+</p>
+
+<%= render partial: "simple_discussion/forum_posts/forum_post", collection: @forum_thread.forum_posts.includes(:user).sorted %>
+
+<%= render partial: "simple_discussion/forum_posts/form" if user_signed_in? %>

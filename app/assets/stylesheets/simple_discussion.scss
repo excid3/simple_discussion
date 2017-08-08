@@ -1,0 +1,62 @@
+/* Allow pagination to be centered */
+.forum-threads-nav nav {
+  display: inline-block;
+}
+
+/* Highlight the active navigation item in the sidebar */
+.forum-thread-filters {
+  a {
+    color: #555;
+  }
+
+  .active {
+    color: #222;
+    font-weight: bolder;
+  }
+}
+
+/* Formatting for the forum threads */
+.forum-thread {
+  h4 a {
+    color: #222;
+  }
+}
+
+.thread-details {
+  color: #999;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Display the forum post count above the "posts" text on the index page */
+.thread-posts-count {
+  text-align: center;
+
+  span, small {
+    display: block;
+  }
+
+  .count {
+    font-size: 1.5em;
+    font-weight: 300;
+    line-height: 1em;
+  }
+}
+
+/* Formatting for the forum posts themselves */
+.forum-post {
+  position: relative;
+
+  /* When the URL anchor matches a post id, highlight that item */
+  &:target {
+    background-color: rgb(248, 238, 199);
+  }
+
+  /* Fill this out if you want to highlight the OPs posts */
+  &.original-poster {
+  }
+
+  &.solved {
+    border: 2px solid #5cb85c;
+  }
+}

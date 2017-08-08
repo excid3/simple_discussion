@@ -1,0 +1,44 @@
+<%= form_for @forum_thread,
+   url: (@forum_thread.persisted? ? simple_discussion.forum_thread_path(@forum_thread) : simple_discussion.forum_threads_path),
+   html: { data: {behavior: "comment-form"} } do |f| %>
+
+  <% if @forum_thread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forum_thread.errors.count, "error") %> prohibited this forum_thread from being saved:</h2>
+
+      <ul>
+      <% @forum_thread.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :forum_category_id, "Choose a Category" %>
+    <%= f.collection_select :forum_category_id, ForumCategory.sorted, :id, :name, {include_blank: "Pick a category..."}, {autofocus: true, class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "How do I...?", class: "form-control" %>
+  </div>
+
+  <% if local_assigns.fetch(:posts, true) %>
+    <%= f.fields_for :forum_posts do |p| %>
+      <div class="form-group">
+        <%= p.label :body, "What do you need help with?" %>
+        <%= p.text_area :body, placeholder: "Add a comment", rows: 10, class: "form-control simplemde", data: { behavior: "comment-body" } %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="form-group text-right">
+    <% if f.object.new_record? %>
+      <%= f.button "Ask Your Question", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
+    <% else %>
+      <%= f.button "Update Thread", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
+    <% end %>
+  </div>
+
+<% end %>
