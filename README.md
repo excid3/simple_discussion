@@ -66,7 +66,9 @@ To get all the basic functionality, the only thing you need to do is add a link 
 <%= link_to "Forum", simple_discussion_path %>
 ```
 
-This will take the user to the views inside the Rails engine.
+This will take the user to the views inside the Rails engine and that's all you have to do!
+
+### Customizing All The Things!
 
 If you'd like to customize the views that SimpleDiscussion uses, you can install the views to your Rails app:
 
@@ -79,6 +81,14 @@ You can also install a copy of the SimpleDiscussion controllers for advanced cus
 ```bash
 rails g simple_discussion:controllers
 ```
+
+Helpers are available for override as well. They are used for rendering the user avatars, text formatting, and more.
+
+```bash
+rails g simple_discussion:helpers
+```
+
+**NOTE:** Keep in mind that the more customization you do, the tougher gem upgrades will be in the future.
 
 ## Development
 
