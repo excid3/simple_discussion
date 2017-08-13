@@ -53,7 +53,7 @@ class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationCont
     end
 
     def set_forum_post
-      if current_user.moderator?
+      if is_moderator?
         @forum_post = @forum_thread.forum_posts.find(params[:id])
       else
         @forum_post = current_user.forum_posts.find(params[:id])
