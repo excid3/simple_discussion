@@ -38,7 +38,7 @@
         <% if is_moderator_or_owner?(@forum_thread) %>
           <small>
             <%= link_to "Undo", simple_discussion.unsolved_forum_thread_forum_post_path(@forum_thread, forum_post), method: :put %>
-          </small
+          </small>
         <% end %>
       </div>
     </div>
