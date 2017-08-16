@@ -1,7 +1,11 @@
-<div class="row">
-  <div class="col-sm-3">
+<div class="row col-md-12">
+  <h1>Community</h1>
+</div>
 
-    <div class="card card-block">
+<div class="row simple_discussion">
+  <div class="col-md-3 mb-3">
+
+    <div class="card card-body">
       <%= link_to 'Ask A Question', simple_discussion.new_forum_thread_path, class: "btn btn-outline-primary btn-block" %>
       <hr />
 
@@ -51,8 +55,12 @@
 
   </div>
 
-  <div class="col">
-    <%= yield %>
+  <div class="col-md-9 mb-3">
+
+    <div class="card card-body">
+      <%= yield %>
+    </div>
+
   </div>
 </div>
 

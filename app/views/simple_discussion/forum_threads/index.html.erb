@@ -1,11 +1,13 @@
-<div class="card card-block mb-3">
-  <%= render partial: "simple_discussion/forum_threads/forum_thread", collection: @forum_threads, spacer_template: "shared/spacer" %>
+<% if @forum_threads.none? %>
 
-  <% if @forum_threads.none? %>
     <div>No results found for your search. Check out <%= link_to "the latest questions", simple_discussion.forum_threads_path %> instead?</div>
-  <% end %>
-</div>
 
-<div class="forum-threads-nav text-center">
-  <%= will_paginate @forum_threads, url_builder: simple_discussion, renderer: SimpleDiscussion::BootstrapLinkRenderer %>
-</div>
+<% else %>
+
+    <%= render partial: "simple_discussion/forum_threads/forum_thread", collection: @forum_threads, spacer_template: "shared/spacer" %>
+
+  <div class="forum-threads-nav text-center">
+    <%= will_paginate @forum_threads, url_builder: simple_discussion, renderer: SimpleDiscussion::BootstrapLinkRenderer %>
+  </div>
+
+<% end %>

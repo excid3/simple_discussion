@@ -20,10 +20,25 @@
 
 /* Formatting for the forum threads */
 .forum-thread {
+  margin-bottom: -20px;
+
   h4 a {
     color: #222;
   }
 }
+
+.forum-thread-filters a {
+  color: #555555;
+  display: block;
+
+  &:hover {
+    color: #222222;
+    font-weight: bold;
+    text-decoration: none
+  }
+}
+
+
 
 .thread-details {
   color: #999;
@@ -45,6 +60,10 @@
     font-weight: 300;
     line-height: 1em;
   }
+
+  &:hover {
+    color: #222;
+  }
 }
 
 /* Formatting for the forum posts themselves */
@@ -63,4 +82,11 @@
   &.solved {
     border: 2px solid #5cb85c;
   }
+}
+
+/* Formatting for the forum hr to match card border */
+.simple_discussion hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  margin: 24px -20px;
 }
