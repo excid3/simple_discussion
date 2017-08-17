@@ -23,7 +23,7 @@
       <hr />
 
       <div class="forum-thread-filters">
-        <p><strong>By Category</strong></p>
+        <h6><strong>By Category</strong></h6>
         <div><%= forum_link_to simple_discussion.forum_threads_path, exact: true do %><%= icon "circle" %> All<% end %></div>
         <% ForumCategory.sorted.each do |category| %>
           <div>
