@@ -4,7 +4,7 @@
 
 <p class="thread-details">
   <strong><%= category_link(@forum_thread.forum_category) %></strong>
-  • Asked <%= time_ago_in_words @forum_thread.created_at %> by <%= @forum_thread.user.name %>
+  • Asked <%= time_ago_in_words(@forum_thread.created_at) + ' ago' %> by <%= @forum_thread.user.name %>
 </p>
 
 <br />
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="card-block">
+  <div class="card-body">
     <%= render "form" %>
   </div>
 <% end %>
