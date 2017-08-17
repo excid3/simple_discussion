@@ -22,8 +22,15 @@
 .forum-thread {
   margin-bottom: -20px;
 
-  h4 a {
-    color: #222;
+  h4 {
+    margin-bottom: 4px;
+
+    a {
+      color: #222;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 1.1;
+    }
   }
 }
 
@@ -37,8 +44,6 @@
     text-decoration: none
   }
 }
-
-
 
 .thread-details {
   color: #999;
@@ -63,6 +68,7 @@
 
   &:hover {
     color: #222;
+    text-decoration: none;
   }
 }
 
@@ -89,4 +95,10 @@
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   margin: 24px -20px;
+}
+
+.simple_discussion .text-muted {
+  color: #999;
+  margin-top: 6px;
+  font-size: 13px;
 }
