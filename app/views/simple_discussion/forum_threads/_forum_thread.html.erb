@@ -19,7 +19,7 @@
 
         <div class="thread-details">
           <strong><%= category_link(forum_thread.forum_category) %></strong>
-          • Asked <%= time_ago_in_words forum_thread.created_at %> by <%= forum_thread.user.name %>
+          • Asked <%= time_ago_in_words(forum_thread.created_at) + ' ago' %> by <%= forum_thread.user.name %>
         </div>
 
         <p class="text-muted"><%= truncate(forum_thread.forum_posts.first.body, length: 200) %></p>
