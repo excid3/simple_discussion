@@ -17,9 +17,21 @@ class SimpleDiscussion::ApplicationController < ::ApplicationController
   end
   helper_method :is_moderator?
 
-  def require_moderator_or_author!
-    unless is_moderator_or_owner?(@forum_thread)
-      redirect_to simple_discussion.root_path, alert: "You aren't allowed to do that."
+  def require_mod_or_author_for_post!
+    unless is_moderator_or_owner?(@forum_post)
+      redirect_to_root
     end
+  end
+
+  def require_mod_or_author_for_thread!
+    unless is_moderator_or_owner?(@forum_thread)
+      redirect_to_root
+    end
+  end
+
+  private
+
+  def redirect_to_root
+    redirect_to simple_discussion.root_path, alert: "You aren't allowed to do that."
   end
 end
