@@ -1,7 +1,7 @@
 class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationController
   before_action :authenticate_user!, only: [:mine, :participating, :new, :create]
   before_action :set_forum_thread, only: [:show, :edit, :update]
-  before_action :require_moderator_or_author!, only: [:edit, :update]
+  before_action :require_mod_or_author_for_thread!, only: [:edit, :update]
 
   def index
     @forum_threads = ForumThread.pinned_first.sorted.includes(:user, :forum_category).paginate(page: page_number)

@@ -2,7 +2,8 @@ class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationCont
   before_action :authenticate_user!
   before_action :set_forum_thread
   before_action :set_forum_post, only: [:edit, :update]
-  before_action :require_moderator_or_author!, only: [:edit, :update, :solved, :unsolved]
+  before_action :require_mod_or_author_for_post!, only: [:edit, :update]
+  before_action :require_mod_or_author_for_thread!, only: [:solved, :unsolved]
 
   def create
     @forum_post = @forum_thread.forum_posts.new(forum_post_params)
