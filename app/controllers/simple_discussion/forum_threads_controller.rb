@@ -54,7 +54,7 @@ class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationCo
 
   def update
     if @forum_thread.update(forum_thread_params)
-      redirect_to simple_discussion.forum_thread_path(@forum_thread), notice: "Your changes were saved."
+      redirect_to simple_discussion.forum_thread_path(@forum_thread), notice: I18n.t('your_changes_were_saved')
     else
       render action: :edit
     end
