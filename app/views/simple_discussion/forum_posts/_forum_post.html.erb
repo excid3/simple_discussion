@@ -8,7 +8,7 @@
         <%= link_to icon("pencil"), simple_discussion.edit_forum_thread_forum_post_path(@forum_thread, forum_post),
           class: "text-muted",
           data: { toggle: "tooltip", placement: "left" },
-          title: "Edit this post"
+          title: t('edit_this_post')
         %>
       </div>
     <% end %>
@@ -20,7 +20,7 @@
         <%= forum_post.user.name %> <%= forum_user_badge(forum_post.user) %>
       </strong>
       <small>
-        commented on
+        <%= t('commented_on') %>
         <%= link_to forum_post.created_at.strftime("%b %d, %Y"), simple_discussion.forum_thread_path(@forum_thread, anchor: "forum_post_#{forum_post.id}") %>:
       </small>
     </div>
@@ -49,7 +49,7 @@
         <small>
           <%= link_to simple_discussion.solved_forum_thread_forum_post_path(@forum_thread, forum_post), method: :put do %>
             <%= icon("check") %>
-            This solved my question
+            <%= t('this_solved_my_question') %>
           <% end %>
         </small>
       </div>

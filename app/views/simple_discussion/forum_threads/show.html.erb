@@ -8,7 +8,7 @@
       <%= link_to icon("pencil"), simple_discussion.edit_forum_thread_path(@forum_thread),
         class: "text-muted",
         data: { toggle: "tooltip", placement: "left" },
-        title: "Edit this thread" %>
+        title: t('edit_this_thread') %>
     </div>
   <% end %>
 
@@ -16,7 +16,7 @@
 
 <p class="thread-details">
   <strong><%= category_link(@forum_thread.forum_category) %></strong>
-  • Asked <%= time_ago_in_words(@forum_thread.created_at) + ' ago' %> by <%= @forum_thread.user.name %>
+  • <%= t('asked_time_ago', time: time_ago_in_words(@forum_thread.created_at), author: @forum_thread.user.name) %>
 </p>
 
 <%= render partial: "simple_discussion/forum_posts/forum_post", collection: @forum_thread.forum_posts.includes(:user).sorted %>
