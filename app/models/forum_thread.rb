@@ -56,20 +56,20 @@ class ForumThread < ApplicationRecord
   end
 
   def subscribed_reason(user)
-    return "You’re not receiving notifications from this thread." if user.nil?
+    return I18n.t('.not_receiving_notifications') if user.nil?
 
     subscription = subscription_for(user)
 
     if subscription.present?
       if subscription.subscription_type == "optout"
-        "You're ignoring this thread."
+        I18n.t('.ignoring_thread')
       elsif subscription.subscription_type == "optin"
-        "You're receiving notifications because you've subscribed to this thread."
+        I18n.t('.receiving_notifications_because_subscribed')
       end
     elsif forum_posts.where(user_id: user.id).any?
-      "You're receiving notifications because you've posted in this thread."
+      I18n.t('.receiving_notifications_because_posted')
     else
-      "You're not receiving notifications from this thread."
+      I18n.t('.not_receiving_notifications')
     end
   end
 
