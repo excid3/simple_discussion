@@ -1,7 +1,7 @@
 <%= cache forum_thread do %>
   <div class="forum-thread">
     <div class="row">
-      <span class="text-center">
+      <span class="votable-container text-center">
         <%= render partial: 'shared/voting', locals: { user: current_user, votable: forum_thread } %>
       </span>
 

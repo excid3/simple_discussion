@@ -1,0 +1,4 @@
+$("a[data-remote]").off()
+$("a[data-remote]").on("ajax:success", function(event){
+  $(this).closest('.votable-container').html("<%= j render partial: 'shared/voting', locals: { user: current_user, votable: @votable } %>")
+});
