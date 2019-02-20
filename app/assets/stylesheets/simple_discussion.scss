@@ -102,3 +102,11 @@
   margin-top: 6px;
   font-size: 13px;
 }
+
+/* Formatting for the voting button */
+.voting {
+  padding-left: 15px;
+  .upvote-unactive {
+    color: rgb(146, 146, 146)
+  }
+}

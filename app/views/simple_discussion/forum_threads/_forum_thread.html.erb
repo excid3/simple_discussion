@@ -1,9 +1,12 @@
 <%= cache forum_thread do %>
   <div class="forum-thread">
     <div class="row">
+      <span class="text-center">
+        <%= render partial: 'shared/voting', locals: { user: current_user, votable: forum_thread } %>
+      </span>
 
       <div class="col-sm-1 text-center">
-          <%= avatar_tag(forum_thread.user.email) %>
+        <%= avatar_tag(forum_thread.user.email) %>
       </div>
 
       <div class="col">
