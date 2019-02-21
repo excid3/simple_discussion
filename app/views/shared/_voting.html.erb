@@ -1,0 +1,12 @@
+<% path = simple_discussion.forum_vote_path(votable_id: votable.id, votable_type: votable.class.name) %>
+<div class='voting'>
+  <% if votable.voted_by?(current_user) %>
+    <%= link_to path, method: :delete, remote: true do %>
+      <%= render partial: 'shared/voting_button', locals: {forum_votes_count: votable.vote_count} %>
+    <% end %>
+  <% else %>
+    <%= link_to path, method: :post, remote: true, class: 'upvote-unactive' do%>
+      <%= render partial: 'shared/voting_button', locals: {forum_votes_count: votable.vote_count} %>
+    <% end %>
+  <% end %>
+</div>

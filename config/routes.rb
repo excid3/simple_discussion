@@ -1,5 +1,6 @@
 SimpleDiscussion::Engine.routes.draw do
   scope module: :simple_discussion do
+    resource :forum_vote, only: [:create, :destroy]
     resources :forum_threads, path: :threads do
       collection do
         get :answered
@@ -8,7 +9,6 @@ SimpleDiscussion::Engine.routes.draw do
         get :participating
         get "category/:id", to: "forum_categories#index", as: :forum_category
       end
-
       resources :forum_posts, path: :posts do
         member do
           put :solved
