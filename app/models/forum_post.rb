@@ -1,5 +1,4 @@
 class ForumPost < ApplicationRecord
-  require 'concerns/forum_votable'
   include ForumVotable
   belongs_to :forum_thread, counter_cache: true, touch: true
   belongs_to :user
