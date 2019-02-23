@@ -25,7 +25,7 @@
   </div>
 
   <% if local_assigns.fetch(:posts, true) %>
-    <%= f.fields_for :forum_post do |p| %>
+    <%= f.fields_for :forum_posts do |p| %>
       <div class="form-group">
         <%= p.label :body, "What do you need help with?" %>
         <%= p.text_area :body, placeholder: t('add_a_comment'), rows: 10, class: "form-control simplemde", data: { behavior: "comment-body" } %>
