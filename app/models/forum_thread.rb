@@ -1,5 +1,4 @@
 class ForumThread < ApplicationRecord
-  require 'concerns/forum_votable'
   include ForumVotable
   extend FriendlyId
   friendly_id :title, use: :slugged
