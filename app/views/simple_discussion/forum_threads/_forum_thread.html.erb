@@ -1,40 +1,42 @@
-<%= cache forum_thread do %>
   <div class="forum-thread">
     <div class="row">
       <span class="votable-container text-center">
         <%= render partial: 'shared/voting', locals: { user: current_user, votable: forum_thread } %>
       </span>
 
-      <div class="col-sm-1 text-center">
-        <%= avatar_tag(forum_thread.user.email) %>
-      </div>
+      <%= cache forum_thread do %>
 
-      <div class="col">
-        <h4>
-          <% if forum_thread.solved? %>
-            <span class="text-success"><%= icon "check-circle" %></span>
-          <% end %>
-
-          <%= link_to simple_discussion.forum_thread_path(forum_thread) do %>
-            <%= icon "thumb-tack", class: "text-muted" if forum_thread.pinned? %> <%= forum_thread.title %>
-          <% end %>
-        </h4>
-
-        <div class="thread-details">
-          <strong><%= category_link(forum_thread.forum_category) %></strong>
-          • <%= t('asked_time_ago', time: time_ago_in_words(forum_thread.created_at), author: forum_thread.user.name) %>
+        <div class="col-sm-1 text-center">
+          <%= avatar_tag(forum_thread.user.email) %>
         </div>
 
-        <p class="text-muted"><%= truncate(forum_thread.forum_posts.first.body, length: 200) %></p>
-      </div>
+        <div class="col">
+          <h4>
+            <% if forum_thread.solved? %>
+              <span class="text-success"><%= icon "check-circle" %></span>
+            <% end %>
 
-      <div class="col-sm-2 text-center">
-        <%= link_to simple_discussion.forum_thread_path(forum_thread), class: "thread-posts-count" do %>
-          <span class="count"><%= forum_thread.forum_posts_count %></span>
-          <small><%= t("post", count: forum_thread.forum_posts_count) %></small>
-        <% end %>
-      </div>
+            <%= link_to simple_discussion.forum_thread_path(forum_thread) do %>
+              <%= icon "thumb-tack", class: "text-muted" if forum_thread.pinned? %> <%= forum_thread.title %>
+            <% end %>
+          </h4>
+
+          <div class="thread-details">
+            <strong><%= category_link(forum_thread.forum_category) %></strong>
+            • <%= t('asked_time_ago', time: time_ago_in_words(forum_thread.created_at), author: forum_thread.user.name) %>
+          </div>
+
+          <p class="text-muted"><%= truncate(forum_thread.forum_posts.first.body, length: 200) %></p>
+        </div>
+
+        <div class="col-sm-2 text-center">
+          <%= link_to simple_discussion.forum_thread_path(forum_thread), class: "thread-posts-count" do %>
+            <span class="count"><%= forum_thread.forum_posts_count %></span>
+            <small><%= t("post", count: forum_thread.forum_posts_count) %></small>
+          <% end %>
+        </div>
+
+      <% end %>
 
     </div>
   </div>
-<% end %>
