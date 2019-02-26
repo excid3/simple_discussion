@@ -2,16 +2,21 @@ en:
   add_a_comment: Add A Comment
   ask_a_question: Ask A Question
   asked_time_ago: "Asked %{time} ago by %{author}"
+  category_name: Category Name
   choose_a_category: Choose a Category
   comment: comment
   commented_on: Commented on
   community: Community
+  color: Color
+  delete_category: Delete Category
+  edit_category: Edit Categoría
   edit_this_post: Edit this post
   edit_this_thread: Edit this thread
   edit_thread: Edit thread
   filters: Filters
   how_do_i: How do I...?
   ignoring_thread: You're ignoring this thread.
+  name: Name
   not_receiving_notifications: You’re not receiving notifications from this thread.
   layouts:
     simple_discussion:
@@ -19,6 +24,8 @@ en:
       answered: Answered
       by_category: By Category
       my_questions: My Questions
+      moderator_options: Moderator Options
+      new_category: New Category
       notifications: Notifications
       participating: Participating
       suscribe: Subscribe
@@ -31,7 +38,10 @@ en:
   receiving_notifications_because_posted: You're receiving notifications because you've posted in this thread.
   saving_comment: Saving comment...
   saving: Saving
+  saving_category: Saving Category...
+  save: Save
   this_solved_my_question: This solved my question
   title: title
   update_comment: Update comment
+  update_category: Update category
   your_changes_were_saved: Your changes were saved

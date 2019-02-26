@@ -1,0 +1,8 @@
+<p><small><%= link_to "← Back", simple_discussion.root_path %></small></p>
+
+<br />
+
+<%= content_tag :div, id: dom_id(@forum_category) do %>
+  <%= render "form" %>
+<% end %>
+

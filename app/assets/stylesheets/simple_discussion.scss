@@ -16,6 +16,15 @@
     color: #222;
     font-weight: bolder;
   }
+
+  .disabled {
+    pointer-events: none;
+    color: gray;
+    i {
+      pointer-events: none;
+      color: gray !important;
+    }
+  }
 }
 
 /* Formatting for the forum threads */
@@ -36,7 +45,7 @@
 
 .forum-thread-filters a {
   color: #555555;
-  display: block;
+  display: inline-block;
 
   &:hover {
     color: #222222;
