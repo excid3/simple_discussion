@@ -1,6 +1,7 @@
 SimpleDiscussion::Engine.routes.draw do
   scope module: :simple_discussion do
     resource :forum_vote, only: [:create, :destroy]
+    resources :forum_categories, except: [:show, :index]
     resources :forum_threads, path: :threads do
       collection do
         get :answered

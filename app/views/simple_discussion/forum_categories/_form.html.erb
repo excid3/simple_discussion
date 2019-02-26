@@ -1,0 +1,32 @@
+<%= form_for @forum_category,
+  url: (@forum_category.persisted? ? simple_discussion.forum_category_path(@forum_category) : simple_discussion.forum_categories_path(@forum_category)),
+  method: (@forum_category.persisted? ? 'patch' : 'create'),
+  html: { data: { behavior: "category-form" } } do |f| %>
+
+  <% if @forum_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forum_category.errors.count, "error") %> prohibited this forum_category from being saved:</h2>
+
+      <ul>
+        <% @forum_category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :forum_category_id, t('name') %>
+    <%= f.text_field :name, placeholder: t('category_name'), class: "form-control", data: { behavior: "category-name" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :forum_category_id, t('color') %>
+    <%= f.color_field :color, placeholder: t('color'), class: "form-control", data: { behavior: "category-color" } %>
+  </div>
+
+  <div class="text-right">
+    <%= f.button "#{f.object.new_record? ? t('save') : t('update_category')  }", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> #{t('saving_category')}"} %>
+  </div>
+
+<% end %>

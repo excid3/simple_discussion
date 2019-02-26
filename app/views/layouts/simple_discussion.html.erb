@@ -65,9 +65,39 @@
               <%= icon "circle", style: "color: #{category.color}" %>
               <%= category.name %>
             <% end %>
+            <% if is_moderator? %>
+              <%= link_to simple_discussion.edit_forum_category_path(category), class: 'pull-right', title: t('edit_category') do %>
+                  <%= icon "edit", style: "color: #{category.color}" %>
+              <% end %>
+              <%= link_to simple_discussion.forum_category_path(category),
+                method: 'delete',
+                class: "pull-right #{'disabled' if category.slug == 'general' }",
+                title: t('delete_category') do %>
+                  <%= icon "times", style: "color: #{category.color}" %>
+                  &nbsp;
+              <% end %>
+            <% end %>
           </div>
         <% end %>
       </div>
+
+      <% if is_moderator? %>
+        <hr />
+
+        <div class="forum-thread-filters">
+          <h6>
+            <strong>
+              <%= t('.moderator_options') %>
+            </strong>
+          </h6>
+          <div>
+            <%= forum_link_to simple_discussion.new_forum_category_path do %>
+              <%= icon "plus-square" %>
+              <%= t('.new_category') %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
       <% if @forum_thread.present? && @forum_thread.persisted? %>
         <hr />
