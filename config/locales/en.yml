@@ -3,6 +3,7 @@ en:
   ask_a_question: Ask A Question
   asked_time_ago: "Asked %{time} ago by %{author}"
   category_name: Category Name
+  delete_category?: Are you sure you want to delete "%{category_name}" category?
   choose_a_category: Choose a Category
   comment: comment
   commented_on: Commented on

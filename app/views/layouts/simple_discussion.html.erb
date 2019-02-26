@@ -71,6 +71,7 @@
               <% end %>
               <%= link_to simple_discussion.forum_category_path(category),
                 method: 'delete',
+                data: {confirm: t('delete_category?', category_name: category.name)},
                 class: "pull-right #{'disabled' if category.slug == 'general' }",
                 title: t('delete_category') do %>
                   <%= icon "times", style: "color: #{category.color}" %>
