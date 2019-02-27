@@ -28,6 +28,11 @@ class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationCont
     end
   end
 
+  def destroy
+    @forum_post.destroy
+    redirect_to simple_discussion.forum_thread_path(@forum_thread)
+  end
+
   def solved
     @forum_post = @forum_thread.forum_posts.find(params[:id])
 

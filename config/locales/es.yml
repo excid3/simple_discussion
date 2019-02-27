@@ -3,13 +3,17 @@ es:
   ask_a_question: HAZ UNA PREGUNTA
   asked_time_ago: "Preguntado hace %{time} por %{author}"
   category_name: "Nombre de la Categoría"
-  delete_category?: Estas seguro de que quieres eliminar la categoría "%{category_name}"
   choose_a_category: Selecciona una categoría
   comment: comenta
   commented_on: Comentado en
   community: Comunidad
   color: Color
   delete_category: Eliminar categoría
+  delete_category?: ¿Estas seguro de que quieres eliminar la categoría "%{category_name}"
+  delete_forum_thread?: ¿Estas seguro de que quieres eliminar el tema de conversación?
+  delete_this_thread: Eliminar este tema
+  delete_post?: ¿Estas seguro de que quieres eliminar este comentario?
+  delete_this_post: Eliminar este comentario
   edit_category: Editar Categoría
   edit_this_post: Edita esta publicación
   edit_this_thread: Edita este tema

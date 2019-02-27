@@ -1,10 +1,10 @@
 class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationController
   before_action :authenticate_user!, only: [:mine, :participating, :new, :create]
-  before_action :set_forum_thread, only: [:show, :edit, :update]
+  before_action :set_forum_thread, only: [:show, :edit, :update, :destroy]
   before_action :require_mod_or_author_for_thread!, only: [:edit, :update]
 
   def index
-    @forum_threads = ForumThread.pinned_first.sorted.includes(:user, :forum_category).paginate(page: page_number)
+    @forum_threads = ForumThread.pinned_first.most_voted_first.sorted.includes(:user, :forum_category).paginate(page: page_number)
   end
 
   def answered
@@ -58,6 +58,11 @@ class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationCo
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    @forum_thread.destroy
+    redirect_to simple_discussion.root_path
   end
 
   private
