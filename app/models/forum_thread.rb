@@ -5,7 +5,7 @@ class ForumThread < ApplicationRecord
 
   belongs_to :forum_category
   belongs_to :user
-  has_many :forum_posts
+  has_many :forum_posts, dependent: :destroy
   has_many :forum_subscriptions
   has_many :optin_subscribers,  ->{ where(forum_subscriptions: { subscription_type: :optin }) },  through: :forum_subscriptions, source: :user
   has_many :optout_subscribers, ->{ where(forum_subscriptions: { subscription_type: :optout }) }, through: :forum_subscriptions, source: :user
@@ -18,6 +18,7 @@ class ForumThread < ApplicationRecord
   validates_associated :forum_posts
 
   scope :pinned_first, ->{ order(pinned: :desc) }
+  scope :most_voted_first, -> { joins(:forum_votes).group('forum_threads.id').order('count(forum_votes.id) DESC') }
   scope :solved,       ->{ where(solved: true) }
   scope :sorted,       ->{ order(updated_at: :desc) }
   scope :unpinned,     ->{ where.not(pinned: true) }

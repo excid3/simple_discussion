@@ -9,6 +9,11 @@
         class: "text-muted",
         data: { toggle: "tooltip", placement: "left" },
         title: t('edit_this_thread') %>
+      <%= link_to icon("times"), simple_discussion.forum_thread_path(@forum_thread),
+        method: 'delete',
+        class: "text-muted",
+        data: { confirm: t('delete_forum_thread?'), toggle: "tooltip", placement: "left" },
+        title: t('delete_this_thread') %>
     </div>
   <% end %>
 
@@ -19,6 +24,6 @@
   • <%= t('asked_time_ago', time: time_ago_in_words(@forum_thread.created_at), author: @forum_thread.user.name) %>
 </p>
 
-<%= render partial: "simple_discussion/forum_posts/forum_post", collection: @forum_thread.forum_posts.includes(:user).sorted %>
+<%= render partial: "simple_discussion/forum_posts/forum_post", collection: @forum_thread.forum_posts.most_voted_first.includes(:user).sorted %>
 
 <%= render partial: "simple_discussion/forum_posts/form" if user_signed_in? %>

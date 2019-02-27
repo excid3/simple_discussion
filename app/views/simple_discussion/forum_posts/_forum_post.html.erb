@@ -30,6 +30,11 @@
           data: { toggle: "tooltip", placement: "left" },
           title: t('edit_this_post')
         %>
+        <%= link_to icon("times"), simple_discussion.forum_thread_forum_post_path(@forum_thread, forum_post),
+          method: 'delete',
+          class: "text-muted",
+          data: { confirm: t('delete_post?'), toggle: "tooltip", placement: "left" },
+          title: t('delete_this_post') %>
       <% end %>
     </div>
     <%= formatted_content forum_post.body %>

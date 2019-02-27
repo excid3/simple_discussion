@@ -10,6 +10,11 @@ en:
   community: Community
   color: Color
   delete_category: Delete Category
+  delete_category?: ¿Are you sure you want to delete "%{category_name} category?"
+  delete_forum_thread?: Are you sure you want to delete the forum thread?
+  delete_this_thread: Delete this thread
+  delete_post?: ¿Are you sure you want to delete this post?
+  delete_this_post: Delete this post
   edit_category: Edit Categoría
   edit_this_post: Edit this post
   edit_this_thread: Edit this thread
