@@ -2,6 +2,7 @@ en:
   add_a_comment: Add A Comment
   ask_a_question: Ask A Question
   asked_time_ago: "Asked %{time} ago by %{author}"
+  ask_your_question: Ask Your Question
   category_name: Category Name
   delete_category?: Are you sure you want to delete "%{category_name}" category?
   choose_a_category: Choose a Category
@@ -23,6 +24,7 @@ en:
   how_do_i: How do I...?
   ignoring_thread: You're ignoring this thread.
   name: Name
+  no_results_html: "No results found for your search. Check out %{href} instead?"
   not_receiving_notifications: You’re not receiving notifications from this thread.
   layouts:
     simple_discussion:
@@ -46,8 +48,14 @@ en:
   saving: Saving
   saving_category: Saving Category...
   save: Save
+  solved: Solved
+  start_a_discussion: Start A Discussion
+  the_latest_questions: lista de temas
   this_solved_my_question: This solved my question
   title: title
+  undo: undo
   update_comment: Update comment
   update_category: Update category
+  update_thread: Update Thread
+  what_do_you_need_help_with?: What do you need help with?
   your_changes_were_saved: Your changes were saved

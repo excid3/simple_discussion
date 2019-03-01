@@ -2,6 +2,7 @@ es:
   add_a_comment: Añade un comentario
   ask_a_question: HAZ UNA PREGUNTA
   asked_time_ago: "Preguntado hace %{time} por %{author}"
+  ask_your_question: Haz Tu Pregunta
   category_name: "Nombre de la Categoría"
   choose_a_category: Selecciona una categoría
   comment: comenta
@@ -22,6 +23,7 @@ es:
   how_do_i: Cómo puedo...?
   ignoring_thread: "Estás ignorando este tema"
   name: "Nombre"
+  no_results_html: "Aún no hay temas de discusión en esta categoría, mira la %{href}"
   not_receiving_notifications: "No estás recibiendo notificaciones de este tema."
   layouts:
     simple_discussion:
@@ -45,8 +47,14 @@ es:
   saving_category: Guardando categoría...
   save: Guardar
   saving: Guardando
+  solved: Resuelto
+  start_a_discussion: Comienza una discusión
+  the_latest_questions: lista de temas
   this_solved_my_question: Esto resolvió mi pregunta
   title: Título
+  undo: Deshacer
   update_category: Actualizar cateogoría
   update_comment: Actualiza tu comentario
+  update_thread: Actualizar Tema
+  what_do_you_need_help_with?: ¿Con qué necesitas ayuda?
   your_changes_were_saved: Tus cambios fueron guardados

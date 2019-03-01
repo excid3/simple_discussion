@@ -1,6 +1,6 @@
 <% if @forum_threads.none? %>
 
-    <div>No results found for your search. Check out <%= link_to "the latest questions", simple_discussion.forum_threads_path %> instead?</div>
+  <div><%= t('no_results_html', href: link_to(t('the_latest_questions'), simple_discussion.forum_threads_path).html_safe) %></div>
 
 <% else %>
 
