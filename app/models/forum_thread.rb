@@ -18,7 +18,6 @@ class ForumThread < ApplicationRecord
   validates_associated :forum_posts
 
   scope :pinned_first, ->{ order(pinned: :desc) }
-  scope :most_voted_first, -> { joins(:forum_votes).group('forum_threads.id').order('count(forum_votes.id) DESC') }
   scope :solved,       ->{ where(solved: true) }
   scope :sorted,       ->{ order(updated_at: :desc) }
   scope :unpinned,     ->{ where.not(pinned: true) }

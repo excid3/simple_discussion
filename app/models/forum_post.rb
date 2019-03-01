@@ -7,7 +7,6 @@ class ForumPost < ApplicationRecord
   validates :user_id, :body, presence: true
 
   scope :sorted, ->{ order(:created_at) }
-  scope :most_voted_first, -> { joins(:forum_votes).group('forum_posts.id').order('count(forum_votes.id) DESC') }
 
   after_update :solve_forum_thread, if: :solved?
 
