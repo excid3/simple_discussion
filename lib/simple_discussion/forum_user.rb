@@ -3,10 +3,10 @@ module SimpleDiscussion
     extend ActiveSupport::Concern
 
     included do
-      has_many :forum_threads
-      has_many :forum_posts
-      has_many :forum_subscriptions
-      has_many :pins
+      has_many :forum_threads, dependent: :destroy
+      has_many :forum_posts, dependent: :destroy
+      has_many :forum_subscriptions, dependent: :destroy
+      has_many :pins, dependent: :destroy
     end
   end
 end
