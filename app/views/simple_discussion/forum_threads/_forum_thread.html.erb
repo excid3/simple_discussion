@@ -12,12 +12,23 @@
 
         <div class="col">
           <h4>
+
+            <%= link_to(
+              icon(
+                "thumb-tack",
+                class: "thumb-tack",
+                style: "color: #{forum_thread.forum_category.color + ' !important' if forum_thread.pinned?(current_user)};"
+              ),
+              simple_discussion.forum_thread_pins_path(forum_thread),
+              method: forum_thread.pinned?(current_user) ? 'destroy' : 'create',
+            )%>
+
             <% if forum_thread.solved? %>
               <span class="text-success"><%= icon "check-circle" %></span>
             <% end %>
 
             <%= link_to simple_discussion.forum_thread_path(forum_thread) do %>
-              <%= icon "thumb-tack", class: "text-muted" if forum_thread.pinned? %> <%= forum_thread.title %>
+              <%= forum_thread.title %>
             <% end %>
           </h4>
 

@@ -18,6 +18,7 @@ SimpleDiscussion::Engine.routes.draw do
       end
 
       resource :notifications
+      resource :pins, only: [:create]
     end
   end
 

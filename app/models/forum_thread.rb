@@ -10,6 +10,7 @@ class ForumThread < ApplicationRecord
   has_many :optin_subscribers,  ->{ where(forum_subscriptions: { subscription_type: :optin }) },  through: :forum_subscriptions, source: :user
   has_many :optout_subscribers, ->{ where(forum_subscriptions: { subscription_type: :optout }) }, through: :forum_subscriptions, source: :user
   has_many :users, through: :forum_posts
+  has_many :pins
 
   accepts_nested_attributes_for :forum_posts
 
@@ -17,7 +18,7 @@ class ForumThread < ApplicationRecord
   validates :user_id, :title, presence: true
   validates_associated :forum_posts
 
-  scope :pinned_first, ->{ order(pinned: :desc) }
+  scope :pinned_first, ->(user) { select{|ft| ft.pinned?(user)} + select{|ft| !ft.pinned?(user)} }
   scope :solved,       ->{ where(solved: true) }
   scope :sorted,       ->{ order(updated_at: :desc) }
   scope :unpinned,     ->{ where.not(pinned: true) }
@@ -54,6 +55,20 @@ class ForumThread < ApplicationRecord
     else
       forum_subscriptions.create(user: user, subscription_type: "optin")
     end
+  end
+
+  def toggle_pin(user)
+    pin = pins.find_by(user_id: user.id)
+    if pin.present?
+      pin.destroy
+    else
+      pins.where(user: user).first_or_create
+    end
+  end
+
+  def pinned?(user)
+    return nil unless user
+    pins.where(user: user).exists?
   end
 
   def subscribed_reason(user)

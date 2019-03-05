@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-11">
-    <h1><%= icon "thumb-tack", class: "text-muted" if @forum_thread.pinned? %> <%= @forum_thread.title %></h1>
+    <h1><%= icon "thumb-tack", class: "text-muted" if @forum_thread.pinned?(current_user) %> <%= @forum_thread.title %></h1>
   </div>
 
   <% if is_moderator_or_owner?(@forum_thread) %>

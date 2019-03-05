@@ -4,7 +4,7 @@ class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationCo
   before_action :require_mod_or_author_for_thread!, only: [:edit, :update]
 
   def index
-    @forum_threads = ForumThread.pinned_first.most_voted_first.sorted.includes(:user, :forum_category).paginate(page: page_number)
+    @forum_threads = ForumThread.most_voted_first.sorted.includes(:user, :forum_category).pinned_first(current_user).paginate(page: page_number)
   end
 
   def answered
