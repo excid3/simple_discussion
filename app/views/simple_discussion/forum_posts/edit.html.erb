@@ -1,6 +1,6 @@
 <p><small><%= link_to "← Back to the thread", simple_discussion.forum_thread_path(@forum_thread) %></small></p>
 
-<h2><%= content_tag :span, "Pinned", class: "text-muted" if @forum_thread.pinned? %> <%= @forum_thread.title %></h2>
+<h2><%= content_tag :span, "Pinned", class: "text-muted" if @forum_thread.pinned?(current_user) %> <%= @forum_thread.title %></h2>
 
 <p class="thread-details">
   <strong><%= category_link(@forum_thread.forum_category) %></strong>

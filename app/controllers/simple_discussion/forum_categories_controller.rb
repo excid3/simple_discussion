@@ -5,7 +5,7 @@ class SimpleDiscussion::ForumCategoriesController < SimpleDiscussion::Applicatio
 
   def index
     @forum_threads = ForumThread.where(forum_category: @forum_category) if @forum_category.present?
-    @forum_threads = @forum_threads.pinned_first.sorted.includes(:user, :forum_category).paginate(per_page: 10, page: page_number)
+    @forum_threads = @forum_threads.sorted.includes(:user, :forum_category).pinned_first(current_user).paginate(per_page: 10, page: page_number)
     render "simple_discussion/forum_threads/index"
   end
 
