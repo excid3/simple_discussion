@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'gravatar_image_tag'
   spec.add_dependency 'rails', '>= 4.2'
   spec.add_dependency 'will_paginate', '>= 3.1.0'
+  spec.add_dependency 'ancestry'
+  spec.add_dependency 'jquery-rails'
 end

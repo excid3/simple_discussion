@@ -4,6 +4,12 @@ module SimpleDiscussion::ForumPostsHelper
     gravatar_image_tag(email, gravatar: { size: 40 }, class: "rounded avatar")
   end
 
+  def nested_forum_posts(forum_posts)
+    forum_posts.map do |forum_post, sub_forum_posts|
+      render(forum_post) + content_tag(:div, nested_forum_posts(sub_forum_posts), :class => "nested_forum_posts")
+    end.join.html_safe
+  end
+
   def category_link(category)
     link_to category.name, simple_discussion.forum_category_forum_threads_path(category),
       style: "color: #{category.color}"

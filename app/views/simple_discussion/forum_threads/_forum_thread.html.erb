@@ -40,7 +40,7 @@
           <p class="text-muted"><%= truncate(forum_thread.forum_posts.first.body, length: 200) %></p>
         </div>
 
-        <div class="col-sm-2 text-center">
+        <div class="col-sm-1 posts-counter">
           <%= link_to simple_discussion.forum_thread_path(forum_thread), class: "thread-posts-count" do %>
             <span class="count"><%= forum_thread.forum_posts_count %></span>
             <small><%= t("post", count: forum_thread.forum_posts_count) %></small>

@@ -1,4 +1,5 @@
 class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationController
+  require 'will_paginate/array'
   before_action :authenticate_user!, only: [:mine, :participating, :new, :create]
   before_action :set_forum_thread, only: [:show, :edit, :update, :destroy]
   before_action :require_mod_or_author_for_thread!, only: [:edit, :update]
@@ -28,6 +29,7 @@ class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationCo
   end
 
   def show
+    @forum_posts = @forum_thread.forum_posts.order(created_at: :asc).most_voted_first.includes(:user)
     @forum_post = ForumPost.new
     @forum_post.user = current_user
   end

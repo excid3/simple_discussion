@@ -3,7 +3,7 @@
 <%= content_tag :div, id: dom_id(forum_post), class: forum_post_classes(forum_post) do %>
   <div class="card-header">
 
-      <div class="pull-right">
+      <div class="pull-left">
         <span class="votable-container text-center">
           <%= render partial: 'shared/voting', locals: { user: current_user, votable: forum_post } %>
         </span>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="card-body">
-    <div class="pull-right">
+    <div class="pull-right options">
       <% if is_moderator_or_owner?(forum_post) %>
         <%= link_to icon("pencil"), simple_discussion.edit_forum_thread_forum_post_path(@forum_thread, forum_post),
           class: "text-muted",
@@ -40,9 +40,17 @@
     <%= formatted_content forum_post.body %>
   </div>
 
-  <% if @forum_thread.solved? && forum_post.solved? %>
-    <div class="card-footer">
-      <div class="pull-right">
+  <div class="card-footer">
+    <div class='diffuse'>
+      <small class='show-more'>
+        <%= content_tag :a, href: '#', data: { behavior: "see-more", target: dom_id(forum_post) } do %>
+          <%= icon("plus") %>
+          <%= t('see_more') %>
+        <% end %>
+      </small>
+    </div>
+    <div class="pull-right options">
+      <% if @forum_thread.solved? && forum_post.solved? %>
         <strong class="text-success"><%= icon("check") %> <%= t('solved') %></strong>
 
         <% if is_moderator_or_owner?(@forum_thread) %>
@@ -50,19 +58,26 @@
             <%= link_to t('undo'), simple_discussion.unsolved_forum_thread_forum_post_path(@forum_thread, forum_post), method: :put %>
           </small>
         <% end %>
-      </div>
-    </div>
-
-  <% elsif is_moderator_or_owner?(@forum_thread) %>
-    <div class="card-footer">
-      <div class="pull-right">
+        <span> | </span>
+      <% elsif is_moderator_or_owner?(@forum_thread) %>
         <small>
           <%= link_to simple_discussion.solved_forum_thread_forum_post_path(@forum_thread, forum_post), method: :put do %>
             <%= icon("check") %>
             <%= t('this_solved_my_question') %>
           <% end %>
         </small>
-      </div>
+        <span> | </span>
+      <% end %>
+      <small>
+        <%= content_tag :a, href: '#', data: { behavior: "reply-link", target: dom_id(forum_post) + '_subcomment'  } do %>
+          <%= icon("reply") %>
+          <%= t('reply') %>
+        <% end %>
+      </small>
     </div>
-  <% end %>
+  </div>
+<% end %>
+
+<%= content_tag :div, id: dom_id(forum_post) + '_subcomment', class: "subcomment-area" do %>
+  <%= render partial: "simple_discussion/forum_posts/form", locals: {parent_id: forum_post.id} if user_signed_in? %>
 <% end %>

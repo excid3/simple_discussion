@@ -54,6 +54,12 @@ Add the following line to your `config/routes.rb` file:
 mount SimpleDiscussion::Engine => "/forum"
 ```
 
+in your application.js file.
+
+```js
+//= require jquery3
+//= require simple_discussion
+```
 Lastly, add the CSS to your `application.css` to load some default styles.
 
 ```scss

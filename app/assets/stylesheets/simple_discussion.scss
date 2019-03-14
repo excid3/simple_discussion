@@ -87,7 +87,7 @@
 
   /* When the URL anchor matches a post id, highlight that item */
   &:target {
-    background-color: rgb(248, 238, 199);
+    background-color:#e5f4ff5c
   }
 
   /* Fill this out if you want to highlight the OPs posts */
@@ -96,6 +96,17 @@
 
   &.solved {
     border: 2px solid #5cb85c;
+  }
+
+  .card-header {
+    padding: 0.6rem 0.7rem 0.35rem 0.7rem;
+  }
+
+  .card-footer {
+    padding: 0.05rem 0.45rem;
+    margin-top: -38px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
   }
 }
 
@@ -123,4 +134,213 @@
 .thumb-tack{
   font-size: 20px;
   color: #bebebe;
+}
+
+/* Formatting for the nested forum posts */
+
+$break-medium: 770px;
+
+.subcomments {
+  border-left: 2px solid gainsboro;
+  padding-left: 15px;
+  #forum_post_body {
+    height: 5.5em;
+    margin-left: 0px;
+    margin-top: -17px;
+    @media screen and (max-width: $break-medium) {
+      text-align: justify;
+    }
+  }
+}
+
+  .forum-thread {
+    @media screen and (max-width: $break-medium) {
+      margin-bottom: 3px;
+    }
+    .posts-counter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -25px;
+      font-family: RobotoRegular;
+      @media screen and (max-width: $break-medium) {
+        margin-top: 10px;
+      }
+    }
+    .votable-container {
+      @media screen and (max-width: $break-medium) {
+        margin-bottom: -50px;
+      }
+    }
+    .variable-padding {
+      padding: 0;
+      @media screen and (max-width: $break-medium) {
+        padding: 20px;
+      }
+      .text-muted {
+        @media screen and (max-width: $break-medium) {
+          text-align: justify;
+        }
+      }
+    }
+    .rounded.avatar {
+      width: 60px;
+      max-width: 100%;
+      height: 60px;
+      border-radius: 50% !important;
+      position: relative;
+      top: unset;
+      left: unset;
+    }
+  }
+
+  .forum-thread-title-wrapper {
+    h1 {
+      @media screen and (max-width: $break-medium) {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .forum-post {
+    min-height: 110px;
+    max-height: 130px;
+    overflow: hidden;
+    @media screen and (max-width: $break-medium) {
+      min-height: unset;
+      max-height: unset;
+    }
+    .card-header {
+      background: transparent;
+      border-bottom: none;
+      margin-bottom: -36px;
+      .user-info-container {
+        @media screen and (max-width: $break-medium) {
+          padding-left: 30px;
+        }
+        .rounded.avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50% !important;
+          position: absolute;
+          top: 40px;
+          left: 40px;
+          @media screen and (max-width: $break-medium) {
+            position: relative;
+            top: unset;
+            left: unset;
+          }
+        }
+      }
+    }
+      .voting {
+        position: relative;
+        padding-left: 5px;
+        top: 25px;
+        @media screen and (max-width: $break-medium) {
+          top: unset;
+          padding-right: 5px;
+        }
+
+      }
+      .forum-post-user {
+        position: relative;
+        left: -10px;
+        @media screen and (max-width: $break-medium) {
+          left: unset;
+        }
+      }
+    .card-body {
+      font-size: 13px;
+      padding: 0.75rem;
+      padding-left: 93px;
+      border-radius: 15px;
+      min-height: 100px;
+      @media screen and (max-width: $break-medium) {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-top: 30px;
+      }
+      img {
+        @media screen and (max-width: $break-medium) {
+          max-width: 100%;
+          height: unset;
+          margin: auto;
+        }
+      }
+      .options {
+        @media screen and (max-width: $break-medium) {
+          margin-right: 7px;
+          padding-left: 12px;
+        }
+        a {
+          @media screen and (max-width: $break-medium) {
+            font-size: 18px;
+            letter-spacing: 6px;
+          }
+        }
+      }
+    }
+      .options {
+        background-color: #f4faff;
+        padding: 2px 5px;
+        border-radius: 4px;
+        margin-top: -31px;
+      }
+      p {
+        font-size: 1.1em;
+        line-height: 1.7em;
+        background: #f7f7f7;
+        border-radius: 15px;
+        padding: 5px 11px;
+        min-height: 42px;
+      }
+    .card-footer {
+      .diffuse {
+        text-align: center;
+        height: 29px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 90%);
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 90%);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) -4%, white 43%);
+      }
+      .options {
+        background-color: white;
+        padding: 0px 5px;
+        border-radius: 8px;
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+      }
+    }
+  }
+
+  .subcomment-area {
+    display: none;
+    .comment-submit {
+      display: none;
+    }
+  }
+
+.nested_forum_posts {
+  border-left: 2px solid gainsboro;
+  padding-left: 30px;
+  @media screen and (max-width: $break-medium) {
+    border-left: 1px solid gainsboro;
+    padding-left: 10px;
+  }
+}
+
+.nested_forum_posts .nested_forum_posts .nested_forum_posts .nested_forum_posts {
+  border-left: none;
+  padding-left: 0;
+}
+
+.small-padd {
+  @media screen and (max-width: $break-medium) {
+    padding: 0.35rem
+  }
 }

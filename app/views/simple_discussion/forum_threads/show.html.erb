@@ -24,6 +24,6 @@
   • <%= t('asked_time_ago', time: time_ago_in_words(@forum_thread.created_at), author: @forum_thread.user.name) %>
 </p>
 
-<%= render partial: "simple_discussion/forum_posts/forum_post", collection: @forum_thread.forum_posts.most_voted_first.includes(:user).sorted %>
+<%= nested_forum_posts @forum_posts.arrange(:order => :created_at) %>
 
 <%= render partial: "simple_discussion/forum_posts/form" if user_signed_in? %>

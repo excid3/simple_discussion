@@ -44,13 +44,15 @@ en:
     other: posts
   receiving_notifications_because_subscribed: You're receiving notifications because you've subscribed to this thread.
   receiving_notifications_because_posted: You're receiving notifications because you've posted in this thread.
+  reply: Reply
   saving_comment: Saving comment...
   saving: Saving
   saving_category: Saving Category...
   save: Save
+  see_more: See more
   solved: Solved
   start_a_discussion: Start A Discussion
-  the_latest_questions: lista de temas
+  the_latest_questions: the latest questions
   this_solved_my_question: This solved my question
   title: title
   undo: undo
