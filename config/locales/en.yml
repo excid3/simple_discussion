@@ -22,6 +22,7 @@ en:
       notifications: Notifications
       participating: Participating
       suscribe: Subscribe
+      unsubscribe: Unsubscribe
       unanswered: Unanswered
   pick_a_category: Pick a category...
   post:
