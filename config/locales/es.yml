@@ -1,4 +1,5 @@
 es:
+  start_a_discussion: Iniciar una discusión
   add_a_comment: Añade un comentario
   ask_a_question: HAZ UNA PREGUNTA
   asked_time_ago: "Preguntado hace %{time} por %{author}"
@@ -22,6 +23,7 @@ es:
       notifications: Notificaciones
       participating: Participando
       suscribe: Suscribirse
+      unsubscribe: Desuscribirse
       unanswered: Sin Responder
   pick_a_category: Elige una categoría...
   post:
@@ -33,5 +35,7 @@ es:
   saving: Guardando
   this_solved_my_question: Esto resolvió mi pregunta
   title: Título
+  what_help_needed: Con qué necesitas ayuda?
+  ask_your_question: Haz tu pregunta
   update_comment: Actualiza tu comentario
   your_changes_were_saved: Tus cambios fueron guardados

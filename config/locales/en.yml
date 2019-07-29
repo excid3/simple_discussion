@@ -1,4 +1,5 @@
 en:
+  start_a_discussion: Start A Discussion
   add_a_comment: Add A Comment
   ask_a_question: Ask A Question
   asked_time_ago: "Asked %{time} ago by %{author}"
@@ -22,6 +23,7 @@ en:
       notifications: Notifications
       participating: Participating
       suscribe: Subscribe
+      unsubscribe: Unsubscribe
       unanswered: Unanswered
   pick_a_category: Pick a category...
   post:
@@ -33,7 +35,11 @@ en:
   saving: Saving
   this_solved_my_question: This solved my question
   title: title
+  what_help_needed: What do you need help with?
+  ask_your_question: Ask Your Question
   update_comment: Update comment
   your_changes_were_saved: Your changes were saved
-  solved: Solved
-  undo: Undo
+  search_not_found: No results found for your search
+  check_out: Check out
+  latest_questions: the latest questions
+  instead: instead?
