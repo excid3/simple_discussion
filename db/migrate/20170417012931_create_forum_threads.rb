@@ -1,6 +1,6 @@
 class CreateForumThreads < ActiveRecord::Migration[4.2]
   def change
-    create_table :forum_threads, force: :cascade do |t|
+    create_table :forum_threads do |t|
       t.references :forum_category, foreign_key: true
       t.references :user, foreign_key: true
       t.string :title, null: false
