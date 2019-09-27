@@ -1,6 +1,6 @@
 class CreateForumCategories < ActiveRecord::Migration[4.2]
   def change
-    create_table :forum_categories, force: :cascade do |t|
+    create_table :forum_categories do |t|
       t.string   :name, null: false
       t.string   :slug, null: false
       t.string   :color, default: "000000"
