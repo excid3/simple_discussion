@@ -9,11 +9,11 @@
       <div class="col">
         <h4>
           <% if forum_thread.solved? %>
-            <span class="text-success"><%= icon "check-circle" %></span>
+            <span class="text-success"><%= icon "fas", "check-circle" %></span>
           <% end %>
 
           <%= link_to simple_discussion.forum_thread_path(forum_thread) do %>
-            <%= icon "thumb-tack", class: "text-muted" if forum_thread.pinned? %> <%= forum_thread.title %>
+            <%= icon "fas", "thumb-tack", class: "text-muted" if forum_thread.pinned? %> <%= forum_thread.title %>
           <% end %>
         </h4>
 
