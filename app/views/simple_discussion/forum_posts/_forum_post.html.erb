@@ -40,7 +40,7 @@
   <% if @forum_thread.solved? && forum_post.solved? %>
     <div class="card-footer">
       <div class="pull-right">
-        <strong class="text-success"><%= icon("fas","fas","check") %> <%= t('solved') %></strong>
+        <strong class="text-success"><%= icon("fas","check") %> <%= t('solved') %></strong>
 
         <% if is_moderator_or_owner?(@forum_thread) %>
           <small>
