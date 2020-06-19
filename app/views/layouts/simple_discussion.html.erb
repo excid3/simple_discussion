@@ -19,32 +19,32 @@
         </h5>
         <div>
           <%= forum_link_to simple_discussion.forum_threads_path, exact: true do %>
-            <%= icon "bars" %>
+            <%= icon "fa-fw fas", "bars" %>
             <%= t('.all_threads') %>
           <% end %>
         </div>
         <% if user_signed_in? %>
           <div>
-            <%= forum_link_to simple_discussion.mine_forum_threads_path do %><%= icon "user-circle-o" %>
+            <%= forum_link_to simple_discussion.mine_forum_threads_path do %><%= icon "fa-fw far", "user-circle" %>
               <%= t('.my_questions') %>
             <% end %>
           </div>
           <div>
             <%= forum_link_to simple_discussion.participating_forum_threads_path do %>
-              <%= icon "comments-o" %>
+              <%= icon "fa-fw far", "comments" %>
               <%= t('.participating') %>
             <% end %>
           </div>
         <% end %>
         <div>
           <%= forum_link_to simple_discussion.answered_forum_threads_path do %>
-            <%= icon "check" %>
+            <%= icon "fa-fw fas", "check" %>
             <%= t('.answered') %>
           <% end %>
         </div>
         <div>
           <%= forum_link_to simple_discussion.unanswered_forum_threads_path do %>
-            <%= icon "question" %>
+            <%= icon "fa-fw fas", "question" %>
             <%= t('.unanswered') %>
           <% end %>
         </div>
@@ -58,11 +58,11 @@
             <%= t('.by_category') %>
           </strong>
         </h6>
-        <div><%= forum_link_to simple_discussion.forum_threads_path, exact: true do %><%= icon "circle" %> All<% end %></div>
+        <div><%= forum_link_to simple_discussion.forum_threads_path, exact: true do %><%= icon "fa-fw fas", "circle" %> All<% end %></div>
         <% ForumCategory.sorted.each do |category| %>
           <div>
             <%= forum_link_to simple_discussion.forum_category_forum_threads_path(category) do %>
-              <%= icon "circle", style: "color: #{category.color}" %>
+              <%= icon "fa-fw fas", "circle", style: "color: #{category.color}" %>
               <%= category.name %>
             <% end %>
           </div>
@@ -77,9 +77,9 @@
 
         <%= link_to simple_discussion.forum_thread_notifications_path(@forum_thread), method: :post, class: "btn btn-secondary btn-sm btn-block mb-2" do %>
           <% if @forum_thread.subscribed? current_user %>
-            <%= icon "bell-slash" %> t('.unsubscribe')
+            <%= icon "fa-fw fas", "bell-slash" %> <%= t('.unsubscribe') %>
           <% else %>
-            <%= icon "bell" %>
+            <%= icon "fa-fw fas", "bell" %>
             <%= t('.suscribe') %>
           <% end %>
         <% end %>
