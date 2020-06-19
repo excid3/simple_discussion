@@ -1,8 +1,8 @@
 class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationController
   before_action :authenticate_user!
   before_action :set_forum_thread
-  before_action :set_forum_post, only: [:edit, :update]
-  before_action :require_mod_or_author_for_post!, only: [:edit, :update]
+  before_action :set_forum_post, only: [:edit, :update, :destroy]
+  before_action :require_mod_or_author_for_post!, only: [:edit, :update, :destroy]
   before_action :require_mod_or_author_for_thread!, only: [:solved, :unsolved]
 
   def create
@@ -26,6 +26,11 @@ class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationCont
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    @forum_post.destroy!
+    redirect_to simple_discussion.forum_thread_path(@forum_thread)
   end
 
   def solved
