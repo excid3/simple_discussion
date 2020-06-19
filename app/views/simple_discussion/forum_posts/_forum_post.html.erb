@@ -4,8 +4,8 @@
   <div class="card-header">
 
     <% if is_moderator_or_owner?(forum_post) %>
-      <div class="pull-right">
-        <%= link_to icon("fas","pencil"), simple_discussion.edit_forum_thread_forum_post_path(@forum_thread, forum_post),
+      <div class="float-right">
+        <%= link_to icon("fas","edit"), simple_discussion.edit_forum_thread_forum_post_path(@forum_thread, forum_post),
           class: "text-muted",
           data: { toggle: "tooltip", placement: "left" },
           title: t('edit_this_post')
