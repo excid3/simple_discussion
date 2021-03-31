@@ -70,9 +70,16 @@ GEM
       rake
       thor (>= 0.14.0)
     ast (2.4.2)
+    bcrypt (3.1.16)
     builder (3.2.4)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
+    devise (4.7.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     erubi (1.10.0)
     ffi (1.15.0)
     font-awesome-sass (5.15.1)
@@ -97,9 +104,12 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    puma (5.2.2)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -133,6 +143,9 @@ GEM
     rainbow (3.0.0)
     rake (13.0.3)
     regexp_parser (2.1.1)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.4)
     rubocop (1.11.0)
       parallel (~> 1.10)
@@ -158,6 +171,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     standard (1.0.4)
       rubocop (= 1.11.0)
       rubocop-performance (= 1.10.1)
@@ -168,6 +182,8 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode-display_width (2.0.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -180,8 +196,11 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
+  devise
+  puma
   rails (~> 6.0.0)
   simple_discussion!
+  sqlite3
   standardrb
 
 BUNDLED WITH

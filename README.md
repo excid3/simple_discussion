@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/excid3/simple_discussion/workflows/Tests/badge.svg)](https://github.com/excid3/simple_discussion/actions) [![Gem Version](https://badge.fury.io/rb/simple_discussion.svg)](https://badge.fury.io/rb/simple_discussion)
 
-SimpleDiscussion is a Rails forum gem extracting the [forum from GoRails](https://gorails.com/forum). It includes categories, simple moderation, the ability to mark threads as solved, and more.
+SimpleDiscussion is a Rails forum gem extracting the [GoRails forum](https://gorails.com/forum). It includes categories, simple moderation, the ability to mark threads as solved, and more.
 
 Out of the box, SimpleDiscussion comes with styling for Bootstrap v4 but you're free to customize the UI as much as you like by installing the views and tweaking the HTML.
 

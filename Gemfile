@@ -7,3 +7,7 @@ gemspec
 
 gem "appraisal"
 gem "standardrb"
+
+gem "devise"
+gem "puma"
+gem "sqlite3"

@@ -1,0 +1,190 @@
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "forum_categories"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "forum_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "slug" varchar NOT NULL, "color" varchar DEFAULT '000000', "created_at" datetime, "updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "forum_posts"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "forum_posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "forum_thread_id" integer, "user_id" integer, "body" text, "solved" boolean DEFAULT 0, "created_at" datetime, "updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "forum_subscriptions"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "forum_subscriptions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "forum_thread_id" integer, "user_id" integer, "subscription_type" varchar, "created_at" datetime, "updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "forum_threads"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "forum_threads" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "forum_category_id" integer, "user_id" integer, "title" varchar NOT NULL, "slug" varchar NOT NULL, "forum_posts_count" integer DEFAULT 0, "pinned" boolean DEFAULT 0, "solved" boolean DEFAULT 0, "created_at" datetime, "updated_at" datetime)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aforum_posts" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "body" text DEFAULT NULL, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aforum_posts" ("id","forum_thread_id","user_id","body","solved","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","body","solved","created_at","updated_at" FROM "forum_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "forum_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "forum_posts" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "body" text DEFAULT NULL, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, CONSTRAINT "fk_rails_4ff57ffa34"
+FOREIGN KEY ("forum_thread_id")
+  REFERENCES "forum_threads" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "forum_posts" ("id","forum_thread_id","user_id","body","solved","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","body","solved","created_at","updated_at" FROM "aforum_posts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aforum_posts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aforum_posts" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "body" text DEFAULT NULL, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aforum_posts" ("id","forum_thread_id","user_id","body","solved","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","body","solved","created_at","updated_at" FROM "forum_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "forum_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "forum_posts" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "body" text DEFAULT NULL, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, CONSTRAINT "fk_rails_4ff57ffa34"
+FOREIGN KEY ("forum_thread_id")
+  REFERENCES "forum_threads" ("id")
+, CONSTRAINT "fk_rails_c76798dc77"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "forum_posts" ("id","forum_thread_id","user_id","body","solved","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","body","solved","created_at","updated_at" FROM "aforum_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aforum_posts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aforum_subscriptions" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "subscription_type" varchar DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aforum_subscriptions" ("id","forum_thread_id","user_id","subscription_type","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","subscription_type","created_at","updated_at" FROM "forum_subscriptions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "forum_subscriptions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "forum_subscriptions" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "subscription_type" varchar DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, CONSTRAINT "fk_rails_b0e434e1f2"
+FOREIGN KEY ("forum_thread_id")
+  REFERENCES "forum_threads" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "forum_subscriptions" ("id","forum_thread_id","user_id","subscription_type","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","subscription_type","created_at","updated_at" FROM "aforum_subscriptions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aforum_subscriptions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aforum_subscriptions" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "subscription_type" varchar DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aforum_subscriptions" ("id","forum_thread_id","user_id","subscription_type","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","subscription_type","created_at","updated_at" FROM "forum_subscriptions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "forum_subscriptions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "forum_subscriptions" ("id" integer NOT NULL PRIMARY KEY, "forum_thread_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "subscription_type" varchar DEFAULT NULL, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, CONSTRAINT "fk_rails_b0e434e1f2"
+FOREIGN KEY ("forum_thread_id")
+  REFERENCES "forum_threads" ("id")
+, CONSTRAINT "fk_rails_8268bd8830"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "forum_subscriptions" ("id","forum_thread_id","user_id","subscription_type","created_at","updated_at")
+                     SELECT "id","forum_thread_id","user_id","subscription_type","created_at","updated_at" FROM "aforum_subscriptions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aforum_subscriptions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aforum_threads" ("id" integer NOT NULL PRIMARY KEY, "forum_category_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "title" varchar NOT NULL, "slug" varchar NOT NULL, "forum_posts_count" integer DEFAULT 0, "pinned" boolean DEFAULT 0, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aforum_threads" ("id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at")
+                     SELECT "id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at" FROM "forum_threads"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "forum_threads"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "forum_threads" ("id" integer NOT NULL PRIMARY KEY, "forum_category_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "title" varchar NOT NULL, "slug" varchar NOT NULL, "forum_posts_count" integer DEFAULT 0, "pinned" boolean DEFAULT 0, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, CONSTRAINT "fk_rails_b504c144c4"
+FOREIGN KEY ("forum_category_id")
+  REFERENCES "forum_categories" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "forum_threads" ("id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at")
+                     SELECT "id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at" FROM "aforum_threads"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aforum_threads"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aforum_threads" ("id" integer NOT NULL PRIMARY KEY, "forum_category_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "title" varchar NOT NULL, "slug" varchar NOT NULL, "forum_posts_count" integer DEFAULT 0, "pinned" boolean DEFAULT 0, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aforum_threads" ("id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at")
+                     SELECT "id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at" FROM "forum_threads"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "forum_threads"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "forum_threads" ("id" integer NOT NULL PRIMARY KEY, "forum_category_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "title" varchar NOT NULL, "slug" varchar NOT NULL, "forum_posts_count" integer DEFAULT 0, "pinned" boolean DEFAULT 0, "solved" boolean DEFAULT 0, "created_at" datetime DEFAULT NULL, "updated_at" datetime DEFAULT NULL, CONSTRAINT "fk_rails_b504c144c4"
+FOREIGN KEY ("forum_category_id")
+  REFERENCES "forum_categories" ("id")
+, CONSTRAINT "fk_rails_bc51c711fd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "forum_threads" ("id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at")
+                     SELECT "id","forum_category_id","user_id","title","slug","forum_posts_count","pinned","solved","created_at","updated_at" FROM "aforum_threads"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aforum_threads"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210331160746)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170417012930),
+(20170417012931),
+(20170417012932),
+(20170417012933),
+(20210331160629),
+(20210331160630),
+(20210331160631),
+(20210331160632);
+
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-03-31 16:19:29.994988"], ["updated_at", "2021-03-31 16:19:29.994988"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "a39f7094d1daf587ead245c7f4068320069b1bd4"], ["created_at", "2021-03-31 16:19:29.997470"], ["updated_at", "2021-03-31 16:19:29.997470"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------
+SimpleDiscussionTest: test_that_it_has_a_version_number
+-------------------------------------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+ForumTest: test_get_index
+-------------------------
+Started GET "/" for 127.0.0.1 at 2021-03-31 11:20:17 -0500
+Processing by SimpleDiscussion::ForumThreadsController#index as HTML
+  Rendering layout /Users/chris/code/simple_discussion/app/views/layouts/simple_discussion.html.erb
+  Rendering /Users/chris/code/simple_discussion/app/views/simple_discussion/forum_threads/index.html.erb within layouts/simple_discussion
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "forum_threads"[0m
+  Rendered /Users/chris/code/simple_discussion/app/views/simple_discussion/forum_threads/index.html.erb within layouts/simple_discussion (Duration: 7.3ms | Allocations: 6455)
+  [1m[36mForumCategory Load (0.1ms)[0m  [1m[34mSELECT "forum_categories".* FROM "forum_categories" ORDER BY "forum_categories"."name" ASC[0m
+  Rendering layouts/application.html.erb
+  Rendered layouts/application.html.erb (Duration: 552.3ms | Allocations: 84281)
+  Rendered layout /Users/chris/code/simple_discussion/app/views/layouts/simple_discussion.html.erb (Duration: 566.7ms | Allocations: 94321)
+Completed 200 OK in 585ms (Views: 569.4ms | ActiveRecord: 0.4ms | Allocations: 104907)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
