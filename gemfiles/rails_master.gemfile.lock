@@ -1,4 +1,16 @@
 GIT
+  remote: https://github.com/ghiculescu/devise
+  revision: 038c969fa3ab6220d8ab0caf979ee305354179da
+  branch: patch-2
+  specs:
+    devise (4.7.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/rails/rails
   revision: d612542336d9a61381311c95a27d801bb4094779
   branch: main
@@ -105,12 +117,6 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
-    devise (4.7.3)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     erubi (1.10.0)
     ffi (1.15.0)
     font-awesome-sass (5.15.1)
@@ -205,7 +211,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
-  devise
+  devise!
   puma
   rails!
   simple_discussion!
