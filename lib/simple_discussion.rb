@@ -1,6 +1,5 @@
 require 'font-awesome-sass'
 require 'friendly_id'
-require 'gravatar_image_tag'
 require 'will_paginate'
 
 require 'simple_discussion/engine'

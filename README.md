@@ -1,4 +1,6 @@
-# SimpleDiscussion
+# SimpleDiscussion - Forum engine for Ruby on Rails
+
+[![Build Status](https://github.com/excid3/simple_discussion/workflows/Tests/badge.svg)](https://github.com/excid3/simple_discussion/actions) [![Gem Version](https://badge.fury.io/rb/simple_discussion.svg)](https://badge.fury.io/rb/simple_discussion)
 
 SimpleDiscussion is a Rails forum gem extracting the [forum from GoRails](https://gorails.com/forum). It includes categories, simple moderation, the ability to mark threads as solved, and more.
 
