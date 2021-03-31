@@ -99,7 +99,7 @@ GIT
 PATH
   remote: ..
   specs:
-    simple_discussion (1.2.0)
+    simple_discussion (1.3.0)
       font-awesome-sass (>= 5.13.0)
       friendly_id (>= 5.2.0)
       rails (>= 4.2)
