@@ -1,7 +1,7 @@
 module SimpleDiscussion::ForumPostsHelper
   # Override this to use avatars from other places than Gravatar
   def avatar_tag(email)
-    gravatar_image_tag(email, gravatar: { size: 40 }, class: "rounded avatar")
+    image_tag gravatar_url_for(email, size: 40), class: "rounded avatar"
   end
 
   def category_link(category)
@@ -25,5 +25,11 @@ module SimpleDiscussion::ForumPostsHelper
     if user.respond_to?(:moderator) && user.moderator?
       content_tag :span, "Mod", class: "badge badge-default"
     end
+  end
+
+  def gravatar_url_for(email, **options)
+    hash = Digest::MD5.hexdigest(email&.downcase || "")
+    options.reverse_merge!(default: :mp, rating: :pg, size: 48)
+    "https://secure.gravatar.com/avatar/#{hash}.png?#{options.to_param}"
   end
 end
