@@ -1,0 +1,17 @@
+hello:
+  user: one
+  forum_category: general
+  title: "Hello World"
+  slug: hello-world
+
+help:
+  user: two
+  forum_category: general
+  title: "Help"
+  slug: help
+
+feedback:
+  user: one
+  forum_category: feedback
+  title: "I have some feedback"
+  slug: i-have-some-feedback

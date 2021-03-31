@@ -1,0 +1,19 @@
+hello:
+  user: one
+  forum_thread: hello
+  body: Hello everyone!
+
+welcome:
+  user: two
+  forum_thread: hello
+  body: Welcome, First User!
+
+help:
+  user: two
+  forum_thread: help
+  body: I need some help with...
+
+feedback:
+  user: one
+  forum_thread: feedback
+  body: I have some feedback...
