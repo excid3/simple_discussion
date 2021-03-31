@@ -13,7 +13,7 @@ class SimpleDiscussion::NotificationsController < SimpleDiscussion::ApplicationC
 
   private
 
-    def set_forum_thread
-      @forum_thread = ForumThread.friendly.find(params[:forum_thread_id])
-    end
+  def set_forum_thread
+    @forum_thread = ForumThread.friendly.find(params[:forum_thread_id])
+  end
 end

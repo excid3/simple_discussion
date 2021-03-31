@@ -9,9 +9,9 @@ class SimpleDiscussion::ForumCategoriesController < SimpleDiscussion::Applicatio
 
   private
 
-    def set_category
-      @category = ForumCategory.friendly.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to simple_discussion.forum_threads_path
-    end
+  def set_category
+    @category = ForumCategory.friendly.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to simple_discussion.forum_threads_path
+  end
 end

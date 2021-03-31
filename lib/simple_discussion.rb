@@ -1,12 +1,12 @@
-require 'font-awesome-sass'
-require 'friendly_id'
-require 'will_paginate'
+require "font-awesome-sass"
+require "friendly_id"
+require "will_paginate"
 
-require 'simple_discussion/engine'
-require 'simple_discussion/forum_user'
-require 'simple_discussion/slack'
-require 'simple_discussion/version'
-require 'simple_discussion/will_paginate'
+require "simple_discussion/engine"
+require "simple_discussion/forum_user"
+require "simple_discussion/slack"
+require "simple_discussion/version"
+require "simple_discussion/will_paginate"
 
 module SimpleDiscussion
   # Define who owns the subscription

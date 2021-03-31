@@ -1,13 +1,13 @@
 module SimpleDiscussion::ForumThreadsHelper
   # Used for flagging links in the navbar as active
-  def forum_link_to(path, opts={}, &block)
+  def forum_link_to(path, opts = {}, &block)
     link_to path, class: forum_link_class(path, opts), &block
   end
 
-  def forum_link_class(matches, opts={})
+  def forum_link_class(matches, opts = {})
     case matches
     when Array
-      "active" if matches.any?{ |m| request.path.starts_with?(m) }
+      "active" if matches.any? { |m| request.path.starts_with?(m) }
     when String
       "active" if opts.fetch(:exact, false) ? request.path == matches : request.path.starts_with?(matches)
     end

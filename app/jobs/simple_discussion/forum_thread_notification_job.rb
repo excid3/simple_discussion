@@ -29,8 +29,8 @@ class SimpleDiscussion::ForumThreadNotificationJob < ApplicationJob
         {
           title: "Posted By",
           value: forum_post.user.name,
-          short: true,
-        },
+          short: true
+        }
       ],
       ts: forum_post.created_at.to_i
     }

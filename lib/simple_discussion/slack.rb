@@ -1,5 +1,5 @@
-require 'open-uri'
-require 'net/http'
+require "open-uri"
+require "net/http"
 
 module SimpleDiscussion
   class Slack
@@ -10,11 +10,11 @@ module SimpleDiscussion
     end
 
     def post(payload)
-      uri          = URI.parse(url)
-      request      = Net::HTTP::Post.new(uri)
-      req_options  = { use_ssl: uri.scheme == "https", }
+      uri = URI.parse(url)
+      request = Net::HTTP::Post.new(uri)
+      req_options = {use_ssl: uri.scheme == "https"}
       request.body = "payload=#{payload.to_json}"
-      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
         http.request(request)
       end
     end

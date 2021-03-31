@@ -6,8 +6,8 @@ class SimpleDiscussion::UserMailer < ApplicationMailer
 
   def new_thread(forum_thread, recipient)
     @forum_thread = forum_thread
-    @forum_post   = forum_thread.forum_posts.first
-    @recipient    = recipient
+    @forum_post = forum_thread.forum_posts.first
+    @recipient = recipient
 
     mail(
       to: "#{@recipient.name} <#{@recipient.email}>",
@@ -16,9 +16,9 @@ class SimpleDiscussion::UserMailer < ApplicationMailer
   end
 
   def new_post(forum_post, recipient)
-    @forum_post   = forum_post
+    @forum_post = forum_post
     @forum_thread = forum_post.forum_thread
-    @recipient    = recipient
+    @recipient = recipient
 
     mail(
       to: "#{@recipient.name} <#{@recipient.email}>",

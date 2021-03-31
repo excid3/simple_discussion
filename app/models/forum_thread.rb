@@ -6,8 +6,8 @@ class ForumThread < ApplicationRecord
   belongs_to :user
   has_many :forum_posts
   has_many :forum_subscriptions
-  has_many :optin_subscribers,  ->{ where(forum_subscriptions: { subscription_type: :optin }) },  through: :forum_subscriptions, source: :user
-  has_many :optout_subscribers, ->{ where(forum_subscriptions: { subscription_type: :optout }) }, through: :forum_subscriptions, source: :user
+  has_many :optin_subscribers, -> { where(forum_subscriptions: {subscription_type: :optin}) }, through: :forum_subscriptions, source: :user
+  has_many :optout_subscribers, -> { where(forum_subscriptions: {subscription_type: :optout}) }, through: :forum_subscriptions, source: :user
   has_many :users, through: :forum_posts
 
   accepts_nested_attributes_for :forum_posts
@@ -16,11 +16,11 @@ class ForumThread < ApplicationRecord
   validates :user_id, :title, presence: true
   validates_associated :forum_posts
 
-  scope :pinned_first, ->{ order(pinned: :desc) }
-  scope :solved,       ->{ where(solved: true) }
-  scope :sorted,       ->{ order(updated_at: :desc) }
-  scope :unpinned,     ->{ where.not(pinned: true) }
-  scope :unsolved,     ->{ where.not(solved: true) }
+  scope :pinned_first, -> { order(pinned: :desc) }
+  scope :solved, -> { where(solved: true) }
+  scope :sorted, -> { order(updated_at: :desc) }
+  scope :unpinned, -> { where.not(pinned: true) }
+  scope :unsolved, -> { where.not(solved: true) }
 
   def subscribed_users
     (users + optin_subscribers).uniq - optout_subscribers
@@ -56,20 +56,20 @@ class ForumThread < ApplicationRecord
   end
 
   def subscribed_reason(user)
-    return I18n.t('.not_receiving_notifications') if user.nil?
+    return I18n.t(".not_receiving_notifications") if user.nil?
 
     subscription = subscription_for(user)
 
     if subscription.present?
       if subscription.subscription_type == "optout"
-        I18n.t('.ignoring_thread')
+        I18n.t(".ignoring_thread")
       elsif subscription.subscription_type == "optin"
-        I18n.t('.receiving_notifications_because_subscribed')
+        I18n.t(".receiving_notifications_because_subscribed")
       end
     elsif forum_posts.where(user_id: user.id).any?
-      I18n.t('.receiving_notifications_because_posted')
+      I18n.t(".receiving_notifications_because_posted")
     else
-      I18n.t('.not_receiving_notifications')
+      I18n.t(".not_receiving_notifications")
     end
   end
 

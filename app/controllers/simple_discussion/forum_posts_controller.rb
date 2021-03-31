@@ -54,19 +54,19 @@ class SimpleDiscussion::ForumPostsController < SimpleDiscussion::ApplicationCont
 
   private
 
-    def set_forum_thread
-      @forum_thread = ForumThread.friendly.find(params[:forum_thread_id])
-    end
+  def set_forum_thread
+    @forum_thread = ForumThread.friendly.find(params[:forum_thread_id])
+  end
 
-    def set_forum_post
-      if is_moderator?
-        @forum_post = @forum_thread.forum_posts.find(params[:id])
-      else
-        @forum_post = current_user.forum_posts.find(params[:id])
-      end
+  def set_forum_post
+    @forum_post = if is_moderator?
+      @forum_thread.forum_posts.find(params[:id])
+    else
+      current_user.forum_posts.find(params[:id])
     end
+  end
 
-    def forum_post_params
-      params.require(:forum_post).permit(:body)
-    end
+  def forum_post_params
+    params.require(:forum_post).permit(:body)
+  end
 end

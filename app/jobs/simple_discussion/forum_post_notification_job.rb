@@ -8,7 +8,7 @@ class SimpleDiscussion::ForumPostNotificationJob < ApplicationJob
 
   def send_emails(forum_post)
     forum_thread = forum_post.forum_thread
-    users        = forum_thread.subscribed_users - [forum_post.user]
+    users = forum_thread.subscribed_users - [forum_post.user]
     users.each do |user|
       SimpleDiscussion::UserMailer.new_post(forum_post, user).deliver_later
     end
@@ -31,8 +31,8 @@ class SimpleDiscussion::ForumPostNotificationJob < ApplicationJob
         {
           title: "Posted By",
           value: forum_post.user.name,
-          short: true,
-        },
+          short: true
+        }
       ],
       ts: forum_post.created_at.to_i
     }

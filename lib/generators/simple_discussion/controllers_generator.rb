@@ -1,4 +1,4 @@
-require 'rails/generators'
+require "rails/generators"
 
 module SimpleDiscussion
   module Generators
@@ -6,7 +6,7 @@ module SimpleDiscussion
       source_root File.expand_path("../../../..", __FILE__)
 
       def copy_controllers
-        directory 'app/controllers/simple_discussion', 'app/controllers/simple_discussion'
+        directory "app/controllers/simple_discussion", "app/controllers/simple_discussion"
       end
     end
   end

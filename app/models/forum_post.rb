@@ -4,7 +4,7 @@ class ForumPost < ApplicationRecord
 
   validates :user_id, :body, presence: true
 
-  scope :sorted, ->{ order(:created_at) }
+  scope :sorted, -> { order(:created_at) }
 
   after_update :solve_forum_thread, if: :solved?
 

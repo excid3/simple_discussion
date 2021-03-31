@@ -2,7 +2,7 @@ class SimpleDiscussion::ApplicationController < ::ApplicationController
   layout "simple_discussion"
 
   def page_number
-    page = params.fetch(:page, '').gsub(/[^0-9]/, '').to_i
+    page = params.fetch(:page, "").gsub(/[^0-9]/, "").to_i
     page = "1" if page.zero?
     page
   end
