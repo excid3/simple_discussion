@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_03_31_160746) do
-
   create_table "forum_categories", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug", null: false
