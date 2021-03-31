@@ -10,7 +10,10 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
-  <body class="p-5">
-    <%= yield %>
+  <body>
+    <%= render partial: "shared/navbar" %>
+    <div class="p-5">
+      <%= yield %>
+    </div>
   </body>
 </html>
