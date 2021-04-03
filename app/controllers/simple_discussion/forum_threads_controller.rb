@@ -39,7 +39,11 @@ class SimpleDiscussion::ForumThreadsController < SimpleDiscussion::ApplicationCo
 
   def create
     @forum_thread = current_user.forum_threads.new(forum_thread_params)
-    @forum_thread.forum_posts.each { |post| post.user_id = current_user.id }
+
+    @forum_thread.forum_posts.each do |post|
+      post.user_id = current_user.id
+      post.forum_thread = @forum_thread
+    end
 
     if @forum_thread.save
       SimpleDiscussion::ForumThreadNotificationJob.perform_later(@forum_thread)
