@@ -9,3 +9,4 @@
 /tmp/
 .DS_Store
 .log
+.sqlite3

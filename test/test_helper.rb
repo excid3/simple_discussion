@@ -22,5 +22,9 @@ class ActiveSupport::TestCase
   include ActiveJob::TestHelper
 end
 
+class ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+end
+
 # Uncomment to view the stacktrace for debugging tests
 Rails.backtrace_cleaner.remove_silencers!
