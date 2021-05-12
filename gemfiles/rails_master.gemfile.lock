@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ghiculescu/devise
-  revision: 038c969fa3ab6220d8ab0caf979ee305354179da
+  revision: e37ea6a0143b9b8a3477b1ed397d8a22ad317a61
   branch: patch-2
   specs:
     devise (4.7.3)
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails
-  revision: d612542336d9a61381311c95a27d801bb4094779
+  revision: 24a1759d7050e51c00777ec28138e99669ca7ecb
   branch: main
   specs:
     actioncable (7.0.0.alpha)
@@ -67,7 +67,7 @@ GIT
       activerecord (= 7.0.0.alpha)
       activesupport (= 7.0.0.alpha)
       marcel (~> 1.0.0)
-      mini_mime (~> 1.0.2)
+      mini_mime (>= 1.1.0)
     activesupport (7.0.0.alpha)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -127,25 +127,25 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    loofah (2.9.0)
+    loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.0)
+    marcel (1.0.1)
     method_source (1.0.0)
-    mini_mime (1.0.3)
+    mini_mime (1.1.0)
     minitest (5.14.4)
     nio4r (2.5.7)
-    nokogiri (1.11.2-x86_64-darwin)
+    nokogiri (1.11.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.2-x86_64-linux)
+    nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.20.1)
-    parser (3.0.0.0)
+    parser (3.0.1.1)
       ast (~> 2.4.1)
-    puma (5.2.2)
+    puma (5.3.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -162,20 +162,20 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rexml (3.2.4)
-    rubocop (1.11.0)
+    rexml (3.2.5)
+    rubocop (1.14.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.2.0, < 2.0)
+      rubocop-ast (>= 1.5.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.4.1)
-      parser (>= 2.7.1.5)
-    rubocop-performance (1.10.1)
-      rubocop (>= 0.90.0, < 2.0)
+    rubocop-ast (1.5.0)
+      parser (>= 3.0.1.1)
+    rubocop-performance (1.11.2)
+      rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
     sassc (2.4.0)
@@ -188,9 +188,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    standard (1.0.4)
-      rubocop (= 1.11.0)
-      rubocop-performance (= 1.10.1)
+    standard (1.1.1)
+      rubocop (= 1.14.0)
+      rubocop-performance (= 1.11.2)
     standardrb (1.0.0)
       standard
     thor (1.1.0)
