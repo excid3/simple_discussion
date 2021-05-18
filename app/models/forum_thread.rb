@@ -4,10 +4,10 @@ class ForumThread < ApplicationRecord
 
   belongs_to :forum_category
   belongs_to :user
-  has_many :forum_posts
-  has_many :forum_subscriptions
-  has_many :optin_subscribers, -> { where(forum_subscriptions: {subscription_type: :optin}) }, through: :forum_subscriptions, source: :user
-  has_many :optout_subscribers, -> { where(forum_subscriptions: {subscription_type: :optout}) }, through: :forum_subscriptions, source: :user
+  has_many :forum_posts, dependent: :destroy
+  has_many :forum_subscriptions, dependent: :destroy
+  has_many :optin_subscribers, -> { where(forum_subscriptions: {subscription_type: :optin}) }, through: :forum_subscriptions, source: :user, dependent: :destroy
+  has_many :optout_subscribers, -> { where(forum_subscriptions: {subscription_type: :optout}) }, through: :forum_subscriptions, source: :user, dependent: :destroy
   has_many :users, through: :forum_posts
 
   accepts_nested_attributes_for :forum_posts

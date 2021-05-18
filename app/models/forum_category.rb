@@ -6,6 +6,9 @@ class ForumCategory < ApplicationRecord
 
   validates :name, :slug, :color, presence: true
 
+  validates :slug, uniqueness: true
+  validates :name, uniqueness: true
+
   def color
     colour = super
     colour.start_with?("#") ? colour : "##{colour}"
