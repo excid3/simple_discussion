@@ -1,6 +1,5 @@
 SimpleDiscussion::Engine.routes.draw do
   scope module: :simple_discussion do
-    resources :forum_categories
     resources :forum_threads, path: :threads do
       collection do
         get :answered
@@ -8,6 +7,9 @@ SimpleDiscussion::Engine.routes.draw do
         get :mine
         get :participating
         get "category/:id", to: "forum_categories#index", as: :forum_category
+        get "categories/new", to: "forum_categories#new", as: :new_forum_category
+        post "categories", to: "forum_categories#create", as: :create_forum_category
+        delete "categories/:id", to: "forum_categories#destroy", as: :destroy_forum_category
       end
 
       resources :forum_posts, path: :posts do
