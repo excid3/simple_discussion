@@ -1,5 +1,6 @@
 SimpleDiscussion::Engine.routes.draw do
   scope module: :simple_discussion do
+    resources :form_categories
     resources :forum_threads, path: :threads do
       collection do
         get :answered
