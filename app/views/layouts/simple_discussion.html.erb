@@ -75,7 +75,9 @@
         <%# User has not posted in the thread or subscribed %>
         <h5><%= t('.notifications') %></h5>
 
-        <%= link_to simple_discussion.forum_thread_notifications_path(@forum_thread), method: :post, class: "btn btn-secondary btn-sm btn-block mb-2" do %>
+        <%= button_to simple_discussion.forum_thread_notifications_path(@forum_thread),
+          method: :post,
+          class: "btn btn-secondary btn-sm btn-block mb-2" do %>
           <% if @forum_thread.subscribed? current_user %>
             <%= icon "fa-fw fas", "bell-slash" %> <%= t('.unsubscribe') %>
           <% else %>
