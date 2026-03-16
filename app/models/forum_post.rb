@@ -2,6 +2,8 @@ class ForumPost < ApplicationRecord
   belongs_to :forum_thread, counter_cache: true, touch: true
   belongs_to :user
 
+  has_rich_text :body
+
   validates :user_id, :body, presence: true
 
   scope :sorted, -> { order(:created_at) }
