@@ -9,11 +9,6 @@ module SimpleDiscussion::ForumPostsHelper
       style: "color: #{category.color}"
   end
 
-  # Override this method to provide your own content formatting like Markdown
-  def formatted_content(text)
-    simple_format(text)
-  end
-
   def forum_post_classes(forum_post)
     klasses = ["forum-post", "card", "mb-3"]
     klasses << "solved" if forum_post.solved?
